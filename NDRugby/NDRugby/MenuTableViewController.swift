@@ -9,15 +9,19 @@
 import UIKit
 
 class MenuTableViewController: UITableViewController {
+    
+    var menu:[String]?;
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        menu = ["History","Roster","Schedule","News & Updates", "Alumni","Share & Comment"]
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        tableView.scrollEnabled = false;
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,23 +33,25 @@ class MenuTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 6
+        //print("menu count: \(menu!.count)")
+        return menu!.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("menuCell", forIndexPath: indexPath)
+        if let label = cell.textLabel{
+            label.text = "\(menu![indexPath.row])"
+        }
         // Configure the cell...
-
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.
