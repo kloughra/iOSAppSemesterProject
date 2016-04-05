@@ -1,0 +1,6 @@
+framework module Pods_NDRugby {
+  umbrella header "Pods-NDRugby-umbrella.h"
+
+  export *
+  module * { export * }
+}
