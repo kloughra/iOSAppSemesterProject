@@ -19,16 +19,17 @@ class FireBaseService{
             shareRef.observeEventType(.ChildAdded, withBlock: { message in
                 let text:String = message.value.objectForKey("text") as! String
                 let user:String = message.key as String
-                let imageURL:String = message.value.objectForKey("imageURL") as! String
+                var imageURL:String?;
+                if let image = message.value.objectForKey("imageURL"){
+                    imageURL = image as? String
+                }
+                
                 let newMessage = Message(text:text,user:user)
-                newMessage.imageURL = imageURL;
+                if let image = imageURL{
+                    newMessage.imageURL = image;
+                }
                 closure(message:newMessage)
                 mesgs.append(newMessage);
-                //print("\(user):")
-                //print(text)
-                //print(imageURL)
-                
-                //print(message.value)
                 }, withCancelBlock: { error in
                     print(error.description)
         })

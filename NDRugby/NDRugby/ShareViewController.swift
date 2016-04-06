@@ -75,17 +75,43 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    /*
+    func configureTableView() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 160.0
+    }*/
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("shareCell", forIndexPath: indexPath)
-        if let label = cell.textLabel{
-            label.text = self.messages[indexPath.row].text
+        //Message With Image
+        if self.messages[indexPath.row].imageURL != ""{
+            //print("Image")
+            let cell = tableView.dequeueReusableCellWithIdentifier("imageCell", forIndexPath: indexPath) as! MediaTableViewCell
+            //TEXT
+            if let label = cell.shareLabel{
+                label.text = self.messages[indexPath.row].text
+            }
+            //IMAGE
+            let image = UIImage(named:"temp_label")
+            cell.shareImage.image = image
+            return cell
         }
-        return cell
+        //Message W/O Image
+        else{
+            //print("No Image")
+            let cell = tableView.dequeueReusableCellWithIdentifier("shareCell", forIndexPath: indexPath)
+            if let label = cell.textLabel{
+                label.text = self.messages[indexPath.row].text
+            }
+            return cell
+        }
+        
     }
     
     

@@ -190,30 +190,37 @@
                                 <rect key="frame" x="0.0" y="118" width="600" height="424"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="shareCell" id="KfR-Eh-6eo" customClass="PlainMessageTableViewCell" customModule="NDRugby" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="shareCell" rowHeight="44" id="KfR-Eh-6eo" customClass="PlainMessageTableViewCell" customModule="NDRugby" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KfR-Eh-6eo" id="dwo-2L-OUj">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="561" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="180" id="zZ5-kI-D70" customClass="MediaTableViewCell" customModule="NDRugby" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="600" height="180"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="220" id="zZ5-kI-D70" customClass="MediaTableViewCell" customModule="NDRugby" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="600" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zZ5-kI-D70" id="bHN-WX-g8X">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="179"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="219"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AbE-ho-KWK">
-                                                    <rect key="frame" x="180" y="6" width="240" height="128"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="quade.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="AbE-ho-KWK">
+                                                    <rect key="frame" x="180" y="8" width="240" height="128"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="240" id="DH4-s3-neQ"/>
                                                         <constraint firstAttribute="height" constant="128" id="SkL-s3-k3e"/>
+                                                        <constraint firstAttribute="width" constant="240" id="gyy-lY-6e5"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="DH4-s3-neQ"/>
+                                                            <exclude reference="SkL-s3-k3e"/>
+                                                        </mask>
+                                                    </variation>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVM-ce-6FR">
-                                                    <rect key="frame" x="8" y="142" width="584" height="29"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVM-ce-6FR">
+                                                    <rect key="frame" x="8" y="144" width="584" height="67"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -222,15 +229,24 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="AbE-ho-KWK" secondAttribute="bottom" id="5Uc-tX-Wpu"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="dVM-ce-6FR" secondAttribute="bottom" id="WvC-XW-km6"/>
-                                                <constraint firstItem="dVM-ce-6FR" firstAttribute="top" secondItem="AbE-ho-KWK" secondAttribute="bottom" constant="8" id="a9W-dh-7Qx"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="dVM-ce-6FR" secondAttribute="leading" id="X1h-SQ-0nI"/>
+                                                <constraint firstItem="AbE-ho-KWK" firstAttribute="centerX" secondItem="bHN-WX-g8X" secondAttribute="centerX" identifier="b" id="Xh5-tY-AeU"/>
+                                                <constraint firstItem="dVM-ce-6FR" firstAttribute="top" secondItem="AbE-ho-KWK" secondAttribute="bottom" constant="8" identifier="a" id="a9W-dh-7Qx"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="dVM-ce-6FR" secondAttribute="trailing" id="f2s-IU-msF"/>
                                                 <constraint firstItem="AbE-ho-KWK" firstAttribute="top" secondItem="bHN-WX-g8X" secondAttribute="topMargin" constant="-2" id="n7A-lV-cyZ"/>
+                                                <constraint firstAttribute="topMargin" secondItem="AbE-ho-KWK" secondAttribute="top" id="pOF-Mc-BRI"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="5Uc-tX-Wpu"/>
+                                                    <exclude reference="n7A-lV-cyZ"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="shareImage" destination="AbE-ho-KWK" id="Ex6-Jl-mAd"/>
+                                            <outlet property="shareLabel" destination="dVM-ce-6FR" id="ABY-Bl-KVo"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -244,12 +260,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBq-3N-HRK">
-                                <rect key="frame" x="534" y="549" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBq-3N-HRK">
+                                <rect key="frame" x="537" y="549" width="40" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="dLs-PD-q6j"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Share"/>
                                 <connections>
                                     <action selector="sendButton:" destination="woL-Zq-kSD" eventType="touchUpInside" id="YQF-DP-d8D"/>
                                 </connections>
@@ -313,6 +329,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="quade.jpg" width="960" height="540"/>
         <image name="temp_label.png" width="291" height="108"/>
     </resources>
 </document>
