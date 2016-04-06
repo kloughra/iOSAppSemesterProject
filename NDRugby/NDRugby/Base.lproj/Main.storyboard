@@ -190,12 +190,46 @@
                                 <rect key="frame" x="0.0" y="118" width="600" height="424"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="shareCell" id="KfR-Eh-6eo">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="shareCell" id="KfR-Eh-6eo" customClass="PlainMessageTableViewCell" customModule="NDRugby" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KfR-Eh-6eo" id="dwo-2L-OUj">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="180" id="zZ5-kI-D70" customClass="MediaTableViewCell" customModule="NDRugby" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="600" height="180"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zZ5-kI-D70" id="bHN-WX-g8X">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="179"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AbE-ho-KWK">
+                                                    <rect key="frame" x="180" y="6" width="240" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="240" id="DH4-s3-neQ"/>
+                                                        <constraint firstAttribute="height" constant="128" id="SkL-s3-k3e"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVM-ce-6FR">
+                                                    <rect key="frame" x="8" y="142" width="584" height="29"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="AbE-ho-KWK" secondAttribute="bottom" id="5Uc-tX-Wpu"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="dVM-ce-6FR" secondAttribute="bottom" id="WvC-XW-km6"/>
+                                                <constraint firstItem="dVM-ce-6FR" firstAttribute="top" secondItem="AbE-ho-KWK" secondAttribute="bottom" constant="8" id="a9W-dh-7Qx"/>
+                                                <constraint firstItem="AbE-ho-KWK" firstAttribute="top" secondItem="bHN-WX-g8X" secondAttribute="topMargin" constant="-2" id="n7A-lV-cyZ"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="5Uc-tX-Wpu"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -206,6 +240,7 @@
                             </tableView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="50r-lo-oWz">
                                 <rect key="frame" x="20" y="550" width="494" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -226,7 +261,6 @@
                             <constraint firstItem="WuI-5F-CxQ" firstAttribute="leading" secondItem="jZV-GH-WDu" secondAttribute="leadingMargin" constant="-20" id="Div-mM-T6J"/>
                             <constraint firstItem="g4H-yT-Tct" firstAttribute="top" secondItem="50r-lo-oWz" secondAttribute="bottom" constant="20" id="GAI-ec-uWh"/>
                             <constraint firstItem="WuI-5F-CxQ" firstAttribute="top" secondItem="orA-o4-zzb" secondAttribute="bottom" constant="8" id="ItG-G9-aGe"/>
-                            <constraint firstItem="50r-lo-oWz" firstAttribute="top" secondItem="WuI-5F-CxQ" secondAttribute="bottom" constant="8" id="J2N-SV-zN9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pBq-3N-HRK" secondAttribute="trailing" id="KLK-qF-JMi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="orA-o4-zzb" secondAttribute="trailing" constant="-20" id="KfW-6S-NAb"/>
                             <constraint firstItem="g4H-yT-Tct" firstAttribute="top" secondItem="WuI-5F-CxQ" secondAttribute="bottom" constant="123" id="LKr-fC-IjX"/>
@@ -236,6 +270,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="50r-lo-oWz" secondAttribute="leading" id="eC4-e9-Ptx"/>
                             <constraint firstItem="orA-o4-zzb" firstAttribute="leading" secondItem="jZV-GH-WDu" secondAttribute="leadingMargin" constant="-20" id="kw8-7l-6Qe"/>
                             <constraint firstItem="pBq-3N-HRK" firstAttribute="leading" secondItem="50r-lo-oWz" secondAttribute="trailing" constant="20" id="mC0-Xh-NUi"/>
+                            <constraint firstItem="g4H-yT-Tct" firstAttribute="top" secondItem="WuI-5F-CxQ" secondAttribute="bottom" constant="58" id="wKt-5Q-WFH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WuI-5F-CxQ" secondAttribute="trailing" constant="-20" id="x6X-FI-G3J"/>
                             <constraint firstAttribute="trailingMargin" secondItem="orA-o4-zzb" secondAttribute="trailing" id="y2M-z0-tpO"/>
                             <constraint firstItem="pBq-3N-HRK" firstAttribute="top" secondItem="WuI-5F-CxQ" secondAttribute="bottom" constant="7" id="zYv-ee-uN9"/>
@@ -250,6 +285,8 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="bottomContraint" destination="GAI-ec-uWh" id="ZQ9-IJ-dwF"/>
+                        <outlet property="buttonConstraint" destination="OkV-kJ-56d" id="RsV-b3-JbV"/>
                         <outlet property="messageField" destination="50r-lo-oWz" id="P1R-p8-7UH"/>
                         <outlet property="tableView" destination="WuI-5F-CxQ" id="RVK-dU-oWA"/>
                     </connections>

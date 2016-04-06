@@ -10,15 +10,20 @@ import UIKit
 
 class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     var messages:[Message] = []
+    var textContraint:CGFloat?
+    var prevButtonContraint:CGFloat?
     let fb = FireBaseService();
-    
 
+    @IBOutlet weak var bottomContraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBAction func sendButton(sender: UIButton) {
-        let newMessage = Message(text: messageField.text!, user: "user1")
+        let newMessage = Message(text: messageField.text!, user: messageField.text!)
         fb.sendMessage(newMessage)
         messageField.text! = ""
+        self.tableView.reloadData()
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -26,9 +31,29 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return false
     }
     
+    func keyboardWillShow(notification: NSNotification) {
+        var info = notification.userInfo!
+        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        self.textContraint = self.bottomContraint.constant
+        //self.prevButtonContraint = self.buttonConstraint.constant
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            self.bottomContraint.constant = keyboardFrame.size.height + 20
+            //self.buttonConstraint.constant = keyboardFrame.size.height + 20
+
+        })
+    }
+    func keyboardWillHide(notification : NSNotification) {
+        
+        self.bottomContraint.constant = self.textContraint!
+        //self.buttonConstraint.constant = self.prevButtonContraint!
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         self.messageField.delegate = self;
         
         fb.shareMessages{
@@ -36,7 +61,14 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.messages.append(message)
             self.tableView.reloadData()
         }
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapDismissKeyboard")
+        view.addGestureRecognizer(tap)
 
+    }
+    
+    func tapDismissKeyboard() {
+        view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
