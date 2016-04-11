@@ -15,7 +15,7 @@ class MenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         menu = ["History","Roster","Schedule","News & Updates", "Alumni","Share & Comment"]
-
+        print("Menu Loaded")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

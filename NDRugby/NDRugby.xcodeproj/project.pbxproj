@@ -15,6 +15,7 @@
 		450596A81CB4F5430091532D /* PlainMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450596A71CB4F5430091532D /* PlainMessageTableViewCell.swift */; };
 		450596AA1CB4F55A0091532D /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450596A91CB4F55A0091532D /* MediaTableViewCell.swift */; };
 		450596AC1CB59F8E0091532D /* quade.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 450596AB1CB59F8E0091532D /* quade.jpg */; };
+		450596B01CB5B43F0091532D /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 450596AF1CB5B43F0091532D /* camera.png */; };
 		4595197D1CB3320300D0A200 /* temp_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 4595197C1CB3320300D0A200 /* temp_label.png */; };
 		45A63C421CAB1F0B00CE0DDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A63C411CAB1F0B00CE0DDC /* AppDelegate.swift */; };
 		45A63C471CAB1F0B00CE0DDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45A63C451CAB1F0B00CE0DDC /* Main.storyboard */; };
@@ -51,6 +52,7 @@
 		450596A71CB4F5430091532D /* PlainMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlainMessageTableViewCell.swift; sourceTree = "<group>"; };
 		450596A91CB4F55A0091532D /* MediaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
 		450596AB1CB59F8E0091532D /* quade.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = quade.jpg; sourceTree = "<group>"; };
+		450596AF1CB5B43F0091532D /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		4595197C1CB3320300D0A200 /* temp_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp_label.png; sourceTree = "<group>"; };
 		45A63C3E1CAB1F0B00CE0DDC /* NDRugby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NDRugby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45A63C411CAB1F0B00CE0DDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 		45A63C751CAC6F7E00CE0DDC /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				450596AF1CB5B43F0091532D /* camera.png */,
 				450596AB1CB59F8E0091532D /* quade.jpg */,
 				4595197C1CB3320300D0A200 /* temp_label.png */,
 			);
@@ -330,6 +333,7 @@
 				45A63C4C1CAB1F0B00CE0DDC /* Assets.xcassets in Resources */,
 				4595197D1CB3320300D0A200 /* temp_label.png in Resources */,
 				450596AC1CB59F8E0091532D /* quade.jpg in Resources */,
+				450596B01CB5B43F0091532D /* camera.png in Resources */,
 				45A63C471CAB1F0B00CE0DDC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

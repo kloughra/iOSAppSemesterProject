@@ -7,14 +7,14 @@
 //
 
 import Foundation
-
+import UIKit
 
 class Message{
     
     var text:String;
     var user:String;
     var date:NSDate?;
-    var imageURL:String?;
+    var image:UIImage?;
     
     init(text:String,user:String){
         self.text = text;
