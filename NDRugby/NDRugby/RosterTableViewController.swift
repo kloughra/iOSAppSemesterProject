@@ -13,7 +13,9 @@ class RosterTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let fb = FacebookService()
+        var im:UIImage = fb.getProfPic()!
+        fb.getName()
     }
 
     override func didReceiveMemoryWarning() {

@@ -19,6 +19,7 @@
 		4537BA0B1CBC3DFA00CEB381 /* RosterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA0A1CBC3DFA00CEB381 /* RosterTableViewController.swift */; };
 		4537BA0F1CBC3E6D00CEB381 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA0E1CBC3E6D00CEB381 /* Player.swift */; };
 		4537BA111CBC422D00CEB381 /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA101CBC422D00CEB381 /* FacebookService.swift */; };
+		4584975B1CBEABF800CDFF74 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4584975A1CBEABF800CDFF74 /* SwiftyJSON.swift */; };
 		4595197D1CB3320300D0A200 /* temp_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 4595197C1CB3320300D0A200 /* temp_label.png */; };
 		45A63C421CAB1F0B00CE0DDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A63C411CAB1F0B00CE0DDC /* AppDelegate.swift */; };
 		45A63C471CAB1F0B00CE0DDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45A63C451CAB1F0B00CE0DDC /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 		4537BA0A1CBC3DFA00CEB381 /* RosterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterTableViewController.swift; sourceTree = "<group>"; };
 		4537BA0E1CBC3E6D00CEB381 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4537BA101CBC422D00CEB381 /* FacebookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
+		4584975A1CBEABF800CDFF74 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		4595197C1CB3320300D0A200 /* temp_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp_label.png; sourceTree = "<group>"; };
 		45A63C3E1CAB1F0B00CE0DDC /* NDRugby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NDRugby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45A63C411CAB1F0B00CE0DDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 		45A63C761CAC6F8800CE0DDC /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				4584975A1CBEABF800CDFF74 /* SwiftyJSON.swift */,
 				45A63C4B1CAB1F0B00CE0DDC /* Assets.xcassets */,
 				45A63C411CAB1F0B00CE0DDC /* AppDelegate.swift */,
 				45A63C501CAB1F0B00CE0DDC /* Info.plist */,
@@ -443,6 +446,7 @@
 				45051F381CB4408600C7600C /* FireBaseService.swift in Sources */,
 				45A63C421CAB1F0B00CE0DDC /* AppDelegate.swift in Sources */,
 				450596A81CB4F5430091532D /* PlainMessageTableViewCell.swift in Sources */,
+				4584975B1CBEABF800CDFF74 /* SwiftyJSON.swift in Sources */,
 				450596A41CB456A10091532D /* ShareTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
