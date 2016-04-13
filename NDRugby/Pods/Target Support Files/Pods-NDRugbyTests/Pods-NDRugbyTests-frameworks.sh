@@ -84,8 +84,16 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-NDRugbyTests/Bolts.framework"
+  install_framework "Pods-NDRugbyTests/FBSDKCoreKit.framework"
+  install_framework "Pods-NDRugbyTests/FBSDKLoginKit.framework"
+  install_framework "Pods-NDRugbyTests/FBSDKShareKit.framework"
   install_framework "Pods-NDRugbyTests/Firebase.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-NDRugbyTests/Bolts.framework"
+  install_framework "Pods-NDRugbyTests/FBSDKCoreKit.framework"
+  install_framework "Pods-NDRugbyTests/FBSDKLoginKit.framework"
+  install_framework "Pods-NDRugbyTests/FBSDKShareKit.framework"
   install_framework "Pods-NDRugbyTests/Firebase.framework"
 fi

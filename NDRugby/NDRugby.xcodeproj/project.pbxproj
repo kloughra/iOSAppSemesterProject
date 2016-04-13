@@ -16,6 +16,9 @@
 		450596AA1CB4F55A0091532D /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450596A91CB4F55A0091532D /* MediaTableViewCell.swift */; };
 		450596AC1CB59F8E0091532D /* quade.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 450596AB1CB59F8E0091532D /* quade.jpg */; };
 		450596B01CB5B43F0091532D /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 450596AF1CB5B43F0091532D /* camera.png */; };
+		4537BA0B1CBC3DFA00CEB381 /* RosterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA0A1CBC3DFA00CEB381 /* RosterTableViewController.swift */; };
+		4537BA0F1CBC3E6D00CEB381 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA0E1CBC3E6D00CEB381 /* Player.swift */; };
+		4537BA111CBC422D00CEB381 /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA101CBC422D00CEB381 /* FacebookService.swift */; };
 		4595197D1CB3320300D0A200 /* temp_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 4595197C1CB3320300D0A200 /* temp_label.png */; };
 		45A63C421CAB1F0B00CE0DDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A63C411CAB1F0B00CE0DDC /* AppDelegate.swift */; };
 		45A63C471CAB1F0B00CE0DDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45A63C451CAB1F0B00CE0DDC /* Main.storyboard */; };
@@ -53,6 +56,9 @@
 		450596A91CB4F55A0091532D /* MediaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
 		450596AB1CB59F8E0091532D /* quade.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = quade.jpg; sourceTree = "<group>"; };
 		450596AF1CB5B43F0091532D /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		4537BA0A1CBC3DFA00CEB381 /* RosterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterTableViewController.swift; sourceTree = "<group>"; };
+		4537BA0E1CBC3E6D00CEB381 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		4537BA101CBC422D00CEB381 /* FacebookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
 		4595197C1CB3320300D0A200 /* temp_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp_label.png; sourceTree = "<group>"; };
 		45A63C3E1CAB1F0B00CE0DDC /* NDRugby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NDRugby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45A63C411CAB1F0B00CE0DDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +111,25 @@
 				A261851354E45B2BBBD6A85B /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4537BA0C1CBC3E3500CEB381 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				450596A51CB4DDAC0091532D /* ShareViewController.swift */,
+				450596A31CB456A10091532D /* ShareTableViewController.swift */,
+				450596A71CB4F5430091532D /* PlainMessageTableViewCell.swift */,
+				450596A91CB4F55A0091532D /* MediaTableViewCell.swift */,
+			);
+			name = Share;
+			sourceTree = "<group>";
+		};
+		4537BA0D1CBC3E4900CEB381 /* Roster */ = {
+			isa = PBXGroup;
+			children = (
+				4537BA0A1CBC3DFA00CEB381 /* RosterTableViewController.swift */,
+			);
+			name = Roster;
 			sourceTree = "<group>";
 		};
 		45A63C351CAB1F0B00CE0DDC = {
@@ -173,6 +198,8 @@
 			children = (
 				45051F371CB4408600C7600C /* FireBaseService.swift */,
 				450596A11CB452300091532D /* Message.swift */,
+				4537BA0E1CBC3E6D00CEB381 /* Player.swift */,
+				4537BA101CBC422D00CEB381 /* FacebookService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -181,10 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				45A63C771CAC701000CE0DDC /* MenuTableViewController.swift */,
-				450596A31CB456A10091532D /* ShareTableViewController.swift */,
-				450596A51CB4DDAC0091532D /* ShareViewController.swift */,
-				450596A71CB4F5430091532D /* PlainMessageTableViewCell.swift */,
-				450596A91CB4F55A0091532D /* MediaTableViewCell.swift */,
+				4537BA0D1CBC3E4900CEB381 /* Roster */,
+				4537BA0C1CBC3E3500CEB381 /* Share */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -407,11 +432,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4537BA0F1CBC3E6D00CEB381 /* Player.swift in Sources */,
 				450596A61CB4DDAC0091532D /* ShareViewController.swift in Sources */,
 				45A63C781CAC701000CE0DDC /* MenuTableViewController.swift in Sources */,
+				4537BA0B1CBC3DFA00CEB381 /* RosterTableViewController.swift in Sources */,
 				45A63C4A1CAB1F0B00CE0DDC /* NDRugby.xcdatamodeld in Sources */,
 				450596A21CB452300091532D /* Message.swift in Sources */,
 				450596AA1CB4F55A0091532D /* MediaTableViewCell.swift in Sources */,
+				4537BA111CBC422D00CEB381 /* FacebookService.swift in Sources */,
 				45051F381CB4408600C7600C /* FireBaseService.swift in Sources */,
 				45A63C421CAB1F0B00CE0DDC /* AppDelegate.swift in Sources */,
 				450596A81CB4F5430091532D /* PlainMessageTableViewCell.swift in Sources */,
@@ -559,6 +587,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NDRugby/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kloughran.NDRugby;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -571,6 +600,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = NDRugby/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = kloughran.NDRugby;
 				PRODUCT_NAME = "$(TARGET_NAME)";

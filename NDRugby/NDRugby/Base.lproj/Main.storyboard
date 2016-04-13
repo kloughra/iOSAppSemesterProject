@@ -54,6 +54,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Y9q-Yn-xvZ" kind="show" identifier="rosterSegue" id="eYW-1H-rED"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="scheduleCell" textLabel="dde-nG-9kw" style="IBUITableViewCellStyleDefault" id="yAh-PV-kNY">
                                         <rect key="frame" x="0.0" y="369" width="600" height="44"/>
@@ -139,6 +142,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xlC-5H-Y5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="675" y="32"/>
+        </scene>
+        <!--Roster Table View Controller-->
+        <scene sceneID="R1h-cL-i80">
+            <objects>
+                <tableViewController id="Y9q-Yn-xvZ" customClass="RosterTableViewController" customModule="NDRugby" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ucq-CU-VGe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="playerCell" id="52s-io-hno">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="52s-io-hno" id="wjY-we-EkO">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Y9q-Yn-xvZ" id="USE-29-NiK"/>
+                            <outlet property="delegate" destination="Y9q-Yn-xvZ" id="yvi-Jk-Pji"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sF3-Ja-yIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1468" y="-234"/>
         </scene>
         <!--Share Table View Controller-->
         <scene sceneID="f06-ZS-dxC">

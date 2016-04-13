@@ -15,7 +15,15 @@ class MenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         menu = ["History","Roster","Schedule","News & Updates", "Alumni","Share & Comment"]
-        print("Menu Loaded")
+        //print("Menu Loaded")
+        let fb = FacebookService()
+        fb.requestFacebook(){
+            (logButton) in
+            CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height-self.view.frame.size.height/2);
+            logButton.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height-self.view.frame.size.height/6);//self.view.center
+            self.view.addSubview(logButton)
+            
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

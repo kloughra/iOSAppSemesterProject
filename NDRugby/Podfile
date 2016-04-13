@@ -4,6 +4,10 @@
 use_frameworks!
 
 pod 'Firebase', '>= 2.5.0'
+pod 'FBSDKCoreKit'
+pod 'FBSDKShareKit'
+pod 'FBSDKLoginKit'
+
 
 target 'NDRugby' do
 
