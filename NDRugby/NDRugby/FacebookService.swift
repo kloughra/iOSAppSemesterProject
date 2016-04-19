@@ -12,12 +12,10 @@ import FBSDKShareKit
 import FBSDKLoginKit
 
 class FacebookService{
-    
+    private var photos:[PlayerPhoto] = []
     init(){
-        
-        //let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "673683302689201", parameters:["fields": "name"])
-
     }
+    
     func requestFacebook(closure: (logButton:FBSDKLoginButton) -> Void){
         let loginButton:FBSDKLoginButton = FBSDKLoginButton()
         closure(logButton: loginButton)
@@ -44,11 +42,14 @@ class FacebookService{
     func getName(){
         //if (fid != "") {
         let id = 673683302689201
-        let access_token = "CAACEdEose0cBAPR0ImrWkyAKoVoTKUGCZBk172WoYwTAz6LnCzZA682pfMc5OQGRTROyEun9F1Nhob9PK39ZCPfjPX6FgacAra8k6sJpy2ZAxaDAHD3dPVgYeEiQN0saJHjDL9bPPFT2g4oQ86W59Eylldvd0JsmRVZA8lBtBUPHCU820hUllwIIWkayvJUSE7RrJkSETSeOQKZCZCYItm8"
+        let access_token = FBSDKAccessToken.currentAccessToken()
+        //"CAACEdEose0cBAPR0ImrWkyAKoVoTKUGCZBk172WoYwTAz6LnCzZA682pfMc5OQGRTROyEun9F1Nhob9PK39ZCPfjPX6FgacAra8k6sJpy2ZAxaDAHD3dPVgYeEiQN0saJHjDL9bPPFT2g4oQ86W59Eylldvd0JsmRVZA8lBtBUPHCU820hUllwIIWkayvJUSE7RrJkSETSeOQKZCZCYItm8"
+        //print("\(access_token.tokenString)")
         
-        let nameURLString = "https://graph.facebook.com/\(id)/albums?fields=name&access_token=\(access_token)" //type=normal
+        let nameURLString = "https://graph.facebook.com/\(id)/albums?fields=name&access_token=\(access_token.tokenString)" //type=normal
         let nameURL = NSURL(string: nameURLString)
         let request = NSMutableURLRequest(URL: nameURL!)
+    
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request){
             (data, responseText, error) -> Void in
@@ -63,7 +64,7 @@ class FacebookService{
                     for(_,album) in json["data"]{
                         
                         if(album["name"].stringValue != "Cover Photos" && album["name"].stringValue != "Profile Pictures"){
-                            print("\(album["name"])")
+                            //print("\(album["name"])")
                             album_ids.append(album["id"].stringValue)
                         }
                         
@@ -79,9 +80,9 @@ class FacebookService{
     
     func get_album_photos(album_ids:[String]){
         for id in album_ids{
-            let access_token = "CAACEdEose0cBAPR0ImrWkyAKoVoTKUGCZBk172WoYwTAz6LnCzZA682pfMc5OQGRTROyEun9F1Nhob9PK39ZCPfjPX6FgacAra8k6sJpy2ZAxaDAHD3dPVgYeEiQN0saJHjDL9bPPFT2g4oQ86W59Eylldvd0JsmRVZA8lBtBUPHCU820hUllwIIWkayvJUSE7RrJkSETSeOQKZCZCYItm8"
-            
-            let nameURLString = "https://graph.facebook.com/\(id)?fields=photos&access_token=\(access_token)" //type=normal
+            let access_token = FBSDKAccessToken.currentAccessToken()
+
+            let nameURLString = "https://graph.facebook.com/\(id)?fields=photos&access_token=\(access_token.tokenString)" //type=normal
             let nameURL = NSURL(string: nameURLString)
             let request = NSMutableURLRequest(URL: nameURL!)
             let session = NSURLSession.sharedSession()
@@ -96,10 +97,20 @@ class FacebookService{
                         //print(json)
                         for(_,photo) in json["photos"]["data"]{
                             //add photo to an dictionary of photos and their tags
-                            print("\(photo["id"]):")
+                            var tags = [String]()
+                            //print("\(photo["id"]):")
                             for (_,tag) in photo["tags"]["data"]{
-                                print("    \(tag["name"].stringValue)")
+                                tags.append(tag["name"].stringValue)
+                                //print("    \(tag["name"].stringValue)")
                             }
+                            let newPhoto = PlayerPhoto(id:photo["id"].stringValue,source:photo["source"].stringValue)
+                            //Only add photos with tags
+                            if tags.count > 0{
+                                newPhoto.tags = tags
+                                self.photos.append(newPhoto)
+                                print(tags)
+                            }
+                            
                             
                         }
                     })

@@ -13,9 +13,13 @@ class RosterTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let newPlayer = Player(firstName: "Katie", lastName: "Loughran", hometown: "South Bend, IN", year: "Senior", position: "8")
+        roster.append(newPlayer)
         let fb = FacebookService()
-        var im:UIImage = fb.getProfPic()!
+        let im:UIImage = fb.getProfPic()!
+        newPlayer.photo = im
         fb.getName()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,7 +31,7 @@ class RosterTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,9 +41,14 @@ class RosterTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("playerCell", forIndexPath: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCellWithIdentifier("playerCell", forIndexPath: indexPath) as! RosterTableViewCell
+        let name = "\(self.roster[indexPath.row].firstName) \(self.roster[indexPath.row].lastName)"
+        cell.playerName.text = name
+        print(name)
+        cell.hometown.text = self.roster[indexPath.row].hometown
+        if let image = self.roster[indexPath.row].photo{
+            cell.playerPhoto.image = image
+        }
 
         return cell
     }
