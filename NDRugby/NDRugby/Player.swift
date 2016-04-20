@@ -14,16 +14,18 @@ class Player{
     var lastName:String
     var nickname:String?
     var hometown:String
+    var major:String
     var year:String
     var position:String
     var photo:UIImage?
     
-    init(firstName:String,lastName:String,hometown:String,year:String,position:String){
+    init(firstName:String,lastName:String,hometown:String,year:String,position:String,major:String){
         self.firstName = firstName
         self.lastName = lastName
         self.hometown = hometown
         self.year = year
         self.position = position
+        self.major = major
     }
     
 }

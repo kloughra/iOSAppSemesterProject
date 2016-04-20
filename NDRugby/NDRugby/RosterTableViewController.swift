@@ -10,15 +10,25 @@ import UIKit
 
 class RosterTableViewController: UITableViewController {
     var roster:[Player] = []
+    var photos:[PlayerPhoto] = []
+    let fb = FacebookService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let newPlayer = Player(firstName: "Katie", lastName: "Loughran", hometown: "South Bend, IN", year: "Senior", position: "8")
+        let newPlayer = Player(firstName: "Katie", lastName: "Loughran", hometown: "South Bend, IN", year: "Senior", position: "8", major:"Computer Science")
         roster.append(newPlayer)
-        let fb = FacebookService()
+        
+        fb.images(){
+            (photos) in
+            self.photos = photos
+            //print(self.photos)
+            for photo in self.photos{
+                print(photo.source)
+            }
+        }
         let im:UIImage = fb.getProfPic()!
         newPlayer.photo = im
-        fb.getName()
+        //fb.getName()
         
     }
 
@@ -60,8 +70,27 @@ class RosterTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "playerDetailSegue" {
+            if let playerDetailViewController = segue.destinationViewController as? PlayerDetailViewController,
+                cell = sender as? RosterTableViewCell,
+                indexPath = self.tableView.indexPathForCell(cell){
+                //Pass console details
+                var new_photos:[UIImage] = []
+                var count = 0
+                for photo in self.photos{
+                    count = count + 1
+                    if count > 30{
+                        break;
+                    }
+                    new_photos.append(fb.sourceImage(photo.source)!)
+                }
+                print(roster[indexPath.row].hometown)
+                playerDetailViewController.player = self.roster[indexPath.row]
+                
+                playerDetailViewController.photos = new_photos
+                
+            }
+        }
     }
     
 

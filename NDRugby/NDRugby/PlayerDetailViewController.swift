@@ -11,8 +11,16 @@ import UIKit
 class PlayerDetailViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     var photos:[UIImage] = []
+    var player:Player?
     
     @IBOutlet weak var fbCollectionView: UICollectionView!
+    
+    @IBOutlet weak var hometown: UILabel!
+    @IBOutlet weak var major: UILabel!
+    @IBOutlet weak var year: UILabel!
+    @IBOutlet weak var position: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let fb = FacebookService()
@@ -26,6 +34,15 @@ class PlayerDetailViewController: UIViewController, UICollectionViewDelegate, UI
         photos.append(im)
         self.fbCollectionView.dataSource = self
         self.fbCollectionView.delegate = self
+        
+        if let play = self.player{
+            self.hometown.text = play.hometown
+            self.major.text = play.major
+            self.year.text = play.year
+            self.position.text = play.position
+            self.title = "\(play.firstName) \(play.lastName)"
+            
+        }
         // Do any additional setup after loading the view.
     }
 

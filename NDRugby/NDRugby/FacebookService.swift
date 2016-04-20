@@ -13,6 +13,8 @@ import FBSDKLoginKit
 
 class FacebookService{
     private var photos:[PlayerPhoto] = []
+    //var group:dispatch_group_t = dispatch_group_create()
+    
     init(){
     }
     
@@ -27,23 +29,34 @@ class FacebookService{
     }
     
     func getProfPic() -> UIImage? {
-        //if (fid != "") {
-            let id = 673683302689201
-            let imgURLString = "https://graph.facebook.com/\(id)/picture?type=large" //type=normal
-            let imgURL = NSURL(string: imgURLString)
-            let imageData = NSData(contentsOfURL: imgURL!)
-            let image = UIImage(data: imageData!)
+        let id = 673683302689201
+        let imgURLString = "https://graph.facebook.com/\(id)/picture?type=large" //type=normal
+        let imgURL = NSURL(string: imgURLString)
+        let imageData = NSData(contentsOfURL: imgURL!)
+        let image = UIImage(data: imageData!)
         if let im = image{
             print("Got Image")
-            return image
+            return im
         }
             return nil
     }
-    func getName(){
+    func sourceImage(sourceURL:String) -> UIImage? {
+        if (sourceURL != "") {
+            print(sourceURL)
+            let imgURLString = sourceURL
+            let imgURL = NSURL(string: imgURLString)
+            let imageData = NSData(contentsOfURL: imgURL!)
+            let image = UIImage(data: imageData!)
+            if let im = image{
+                return im
+            }
+        }
+        return nil
+    }
+    func images(closure:(images:[PlayerPhoto]) -> Void){
         //if (fid != "") {
         let id = 673683302689201
         let access_token = FBSDKAccessToken.currentAccessToken()
-        //"CAACEdEose0cBAPR0ImrWkyAKoVoTKUGCZBk172WoYwTAz6LnCzZA682pfMc5OQGRTROyEun9F1Nhob9PK39ZCPfjPX6FgacAra8k6sJpy2ZAxaDAHD3dPVgYeEiQN0saJHjDL9bPPFT2g4oQ86W59Eylldvd0JsmRVZA8lBtBUPHCU820hUllwIIWkayvJUSE7RrJkSETSeOQKZCZCYItm8"
         //print("\(access_token.tokenString)")
         
         let nameURLString = "https://graph.facebook.com/\(id)/albums?fields=name&access_token=\(access_token.tokenString)" //type=normal
@@ -69,7 +82,13 @@ class FacebookService{
                         }
                         
                     }
-                    self.get_album_photos(album_ids)
+                    self.get_album_photos(album_ids){
+                    //print(self.photos)
+                        (im, count) in
+                        if count >= album_ids.count{
+                            closure(images: self.photos)
+                        }
+                    }
                 })
                 
             }
@@ -78,11 +97,12 @@ class FacebookService{
     }
     
     
-    func get_album_photos(album_ids:[String]){
+    func get_album_photos(album_ids:[String], closure:(images:[PlayerPhoto], count:Int)-> Void){
+        var cnt:Int = 0
         for id in album_ids{
             let access_token = FBSDKAccessToken.currentAccessToken()
 
-            let nameURLString = "https://graph.facebook.com/\(id)?fields=photos&access_token=\(access_token.tokenString)" //type=normal
+            let nameURLString = "https://graph.facebook.com/\(id)?fields=photos%7Bimages,name,tags,source%7D&access_token=\(access_token.tokenString)" //type=normal
             let nameURL = NSURL(string: nameURLString)
             let request = NSMutableURLRequest(URL: nameURL!)
             let session = NSURLSession.sharedSession()
@@ -93,6 +113,7 @@ class FacebookService{
                 } else {
                     //var inf = [String]()
                     dispatch_async(dispatch_get_main_queue(), {
+                        cnt = cnt + 1;
                         let json = JSON(data: data!)
                         //print(json)
                         for(_,photo) in json["photos"]["data"]{
@@ -108,20 +129,22 @@ class FacebookService{
                             if tags.count > 0{
                                 newPhoto.tags = tags
                                 self.photos.append(newPhoto)
-                                print(tags)
                             }
                             
                             
                         }
+                        //print(cnt)
+                        closure(images: self.photos, count: cnt)
                     })
                     
                 }
+                //print(self.photos)
             }
             task.resume()
-            
+
         }
-        
     }
+    
 }
 
 
