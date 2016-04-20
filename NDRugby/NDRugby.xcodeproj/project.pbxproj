@@ -24,6 +24,7 @@
 		4584975F1CBEDFD900CDFF74 /* RosterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4584975E1CBEDFD900CDFF74 /* RosterTableViewCell.swift */; };
 		458497611CC5FA6C00CDFF74 /* PlayerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458497601CC5FA6C00CDFF74 /* PlayerDetailViewController.swift */; };
 		458497631CC5FDCE00CDFF74 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458497621CC5FDCE00CDFF74 /* PhotoCollectionViewCell.swift */; };
+		458497651CC76DD600CDFF74 /* PlayerPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458497641CC76DD600CDFF74 /* PlayerPhotoViewController.swift */; };
 		4595197D1CB3320300D0A200 /* temp_label.png in Resources */ = {isa = PBXBuildFile; fileRef = 4595197C1CB3320300D0A200 /* temp_label.png */; };
 		45A63C421CAB1F0B00CE0DDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A63C411CAB1F0B00CE0DDC /* AppDelegate.swift */; };
 		45A63C471CAB1F0B00CE0DDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45A63C451CAB1F0B00CE0DDC /* Main.storyboard */; };
@@ -69,6 +70,7 @@
 		4584975E1CBEDFD900CDFF74 /* RosterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterTableViewCell.swift; sourceTree = "<group>"; };
 		458497601CC5FA6C00CDFF74 /* PlayerDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetailViewController.swift; sourceTree = "<group>"; };
 		458497621CC5FDCE00CDFF74 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		458497641CC76DD600CDFF74 /* PlayerPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerPhotoViewController.swift; sourceTree = "<group>"; };
 		4595197C1CB3320300D0A200 /* temp_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temp_label.png; sourceTree = "<group>"; };
 		45A63C3E1CAB1F0B00CE0DDC /* NDRugby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NDRugby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45A63C411CAB1F0B00CE0DDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				4584975E1CBEDFD900CDFF74 /* RosterTableViewCell.swift */,
 				458497601CC5FA6C00CDFF74 /* PlayerDetailViewController.swift */,
 				458497621CC5FDCE00CDFF74 /* PhotoCollectionViewCell.swift */,
+				458497641CC76DD600CDFF74 /* PlayerPhotoViewController.swift */,
 			);
 			name = Roster;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 			files = (
 				4537BA0F1CBC3E6D00CEB381 /* Player.swift in Sources */,
 				450596A61CB4DDAC0091532D /* ShareViewController.swift in Sources */,
+				458497651CC76DD600CDFF74 /* PlayerPhotoViewController.swift in Sources */,
 				4584975F1CBEDFD900CDFF74 /* RosterTableViewCell.swift in Sources */,
 				45A63C781CAC701000CE0DDC /* MenuTableViewController.swift in Sources */,
 				458497631CC5FDCE00CDFF74 /* PhotoCollectionViewCell.swift in Sources */,

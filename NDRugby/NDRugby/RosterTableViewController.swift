@@ -75,18 +75,24 @@ class RosterTableViewController: UITableViewController {
                 cell = sender as? RosterTableViewCell,
                 indexPath = self.tableView.indexPathForCell(cell){
                 //Pass console details
-                var new_photos:[UIImage] = []
-                var count = 0
+                var new_images:[UIImage] = []
+                var new_photos:[PlayerPhoto] = []
+                let name = "\(roster[indexPath.row].firstName) \(roster[indexPath.row].lastName)"
                 for photo in self.photos{
-                    count = count + 1
-                    if count > 30{
-                        break;
+                    if let tags = photo.tags{
+                        for tag in tags{
+                            if tag.lowercaseString.rangeOfString(name.lowercaseString) != nil {
+                                print("Photo with tag \(name)")
+                                new_images.append(fb.sourceImage(photo.source)!)
+                                new_photos.append(photo)
+                            }
+                        }
                     }
-                    new_photos.append(fb.sourceImage(photo.source)!)
                 }
                 print(roster[indexPath.row].hometown)
                 playerDetailViewController.player = self.roster[indexPath.row]
                 
+                playerDetailViewController.images = new_images
                 playerDetailViewController.photos = new_photos
                 
             }

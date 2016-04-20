@@ -42,7 +42,7 @@ class FacebookService{
     }
     func sourceImage(sourceURL:String) -> UIImage? {
         if (sourceURL != "") {
-            print(sourceURL)
+            //print(sourceURL)
             let imgURLString = sourceURL
             let imgURL = NSURL(string: imgURLString)
             let imageData = NSData(contentsOfURL: imgURL!)
