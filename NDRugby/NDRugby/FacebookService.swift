@@ -40,6 +40,54 @@ class FacebookService{
         }
             return nil
     }
+    
+    func getBecauseOfRugby(closure:(images:[PlayerPhoto]) -> Void){
+        var borPics:[PlayerPhoto] = []
+        let id = 1069442799779914
+        let access_token = FBSDKAccessToken.currentAccessToken()
+        
+        let nameURLString = "https://graph.facebook.com/\(id)?fields=photos%7Bimages,name,tags,source%7D&access_token=\(access_token.tokenString)"
+        let nameURL = NSURL(string: nameURLString)
+        let request = NSMutableURLRequest(URL: nameURL!)
+        print("Because of Rugby")
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request){
+            (data, responseText, error) -> Void in
+            if error != nil {
+                print(error)
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    let json = JSON(data: data!)
+                    //print(json)
+                    print("JSON")
+                    for(_,photo) in json["photos"]["data"]{
+                        //add photo to an dictionary of photos and their tags
+                        var tags = [String]()
+                        print("Photo")
+                        //print("\(photo["id"]):")
+                        for (_,tag) in photo["tags"]["data"]{
+                            tags.append(tag["name"].stringValue)
+                            print("\(tag["name"].stringValue)")
+                        }
+                        let newPhoto = PlayerPhoto(id:photo["id"].stringValue,source:photo["source"].stringValue)
+                        //Only add photos with tags
+                        if tags.count > 0{
+                            newPhoto.tags = tags
+                            borPics.append(newPhoto)
+                        }
+    
+                    }
+                    closure(images:borPics)
+
+                })
+                
+            }
+        }
+        task.resume()
+    
+    }
+    
+    
     func sourceImage(sourceURL:String) -> UIImage? {
         if (sourceURL != "") {
             //print(sourceURL)

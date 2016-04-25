@@ -11,20 +11,28 @@ import UIKit
 class RosterTableViewController: UITableViewController {
     var roster:[Player] = []
     var photos:[PlayerPhoto] = []
+    var borPhotos:[PlayerPhoto] = []
     let fb = FacebookService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let newPlayer = Player(firstName: "Katie", lastName: "Loughran", hometown: "South Bend, IN", year: "Senior", position: "8", major:"Computer Science")
         roster.append(newPlayer)
+        let fb2 = FireBaseService()
+        fb2.getRoster(){
+            (roster) in
+                self.roster = roster
+                self.tableView.reloadData()
+        }
         
         fb.images(){
             (photos) in
             self.photos = photos
-            //print(self.photos)
-            for photo in self.photos{
-                print(photo.source)
-            }
+        }
+        
+        fb.getBecauseOfRugby(){
+            (photos) in
+            self.borPhotos = photos
         }
         let im:UIImage = fb.getProfPic()!
         newPlayer.photo = im
@@ -54,16 +62,25 @@ class RosterTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("playerCell", forIndexPath: indexPath) as! RosterTableViewCell
         let name = "\(self.roster[indexPath.row].firstName) \(self.roster[indexPath.row].lastName)"
         cell.playerName.text = name
-        print(name)
+        
         cell.hometown.text = self.roster[indexPath.row].hometown
-        if let image = self.roster[indexPath.row].photo{
-            cell.playerPhoto.image = image
+            
+        for photo in self.borPhotos{
+            if let tags = photo.tags{
+                for tag in tags{
+                    if tag.lowercaseString.rangeOfString(name.lowercaseString) != nil {
+                        let im = fb.sourceImage(photo.source)
+                        //cell.playerPhoto.image = im//cropToBounds(im!, width: 128, height: 128)
+                        let croppedImage: UIImage = ImageUtil.cropToSquare(image: im!)
+                        cell.playerPhoto.image = croppedImage
+                    }
+                }
+            }
         }
+        
 
         return cell
     }
-
-
 
     
     // MARK: - Navigation
@@ -82,9 +99,18 @@ class RosterTableViewController: UITableViewController {
                     if let tags = photo.tags{
                         for tag in tags{
                             if tag.lowercaseString.rangeOfString(name.lowercaseString) != nil {
-                                print("Photo with tag \(name)")
+                                //print("Photo with tag \(name)")
                                 new_images.append(fb.sourceImage(photo.source)!)
                                 new_photos.append(photo)
+                            }
+                        }
+                    }
+                }
+                for photo in self.borPhotos{
+                    if let tags = photo.tags{
+                        for tag in tags{
+                            if tag.lowercaseString.rangeOfString(name.lowercaseString) != nil {
+                                playerDetailViewController.mainPhoto = photo
                             }
                         }
                     }
@@ -98,6 +124,7 @@ class RosterTableViewController: UITableViewController {
             }
         }
     }
+    
     
 
 }

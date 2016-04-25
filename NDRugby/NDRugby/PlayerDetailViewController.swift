@@ -15,7 +15,9 @@ class PlayerDetailViewController: UIViewController, UICollectionViewDelegate, UI
     var images:[UIImage] = []
     var photos:[PlayerPhoto] = []
     var player:Player?
+    var mainPhoto:PlayerPhoto?
     
+    @IBOutlet weak var playerPhoto: UIImageView!
     @IBOutlet weak var fbCollectionView: UICollectionView!
     @IBOutlet weak var hometown: UILabel!
     @IBOutlet weak var major: UILabel!
@@ -37,6 +39,10 @@ class PlayerDetailViewController: UIViewController, UICollectionViewDelegate, UI
             self.position.text = play.position
             self.title = "\(play.firstName) \(play.lastName)"
             
+        }
+        if let mainP = self.mainPhoto{
+            let im = fb.sourceImage(mainP.source)
+            self.playerPhoto.image = im
         }
         // Do any additional setup after loading the view.
     }
@@ -79,9 +85,9 @@ class PlayerDetailViewController: UIViewController, UICollectionViewDelegate, UI
         let fbPhoto =  images[indexPath.item]
         
         var size = fbPhoto.size
-        size.width = size.width/5
+        size.width = size.width/3
         size.width += 10
-        size.height = size.height/5
+        size.height = size.height/3
         size.height += 10
         return size
     }

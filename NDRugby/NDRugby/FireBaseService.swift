@@ -13,6 +13,33 @@ import UIKit
 class FireBaseService{
     var myRef = Firebase(url:"https://ndwomensrugby.firebaseio.com")
     
+    func getRoster(closure: (players:[Player]) -> Void){
+        var plyrs:[Player] = []
+        let shareRef = myRef.childByAppendingPath("Roster")
+        shareRef.observeEventType(.Value, withBlock: { player in
+            for child in player.children{
+                //print(child.value.objectForKey("major") as! String)
+                let major:String = child.value.objectForKey("major") as! String
+                let hometown:String = child.value.objectForKey("hometown") as! String
+                let position:String = child.value.objectForKey("position") as! String
+                let year:String = child.value.objectForKey("year") as! String
+                let fullName:String = child.key as String
+                let fullNameArr = fullName.characters.split{$0 == " "}.map(String.init)
+                let firstName = fullNameArr[0]
+                let lastName = fullNameArr[1]
+                 
+                let newPlayer = Player(firstName: firstName, lastName: lastName, hometown: hometown, year: year, position: position, major: major)
+                 
+                //closure(player:newPlayer)
+                plyrs.append(newPlayer);
+            }
+            print(plyrs)
+            closure(players:plyrs)
+            }, withCancelBlock: { error in
+                print(error.description)
+        })
+        
+    }
     
     func shareMessages(closure: (message:Message) -> Void){
         var mesgs:[Message] = []

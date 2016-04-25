@@ -16,6 +16,7 @@
 		450596AA1CB4F55A0091532D /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450596A91CB4F55A0091532D /* MediaTableViewCell.swift */; };
 		450596AC1CB59F8E0091532D /* quade.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 450596AB1CB59F8E0091532D /* quade.jpg */; };
 		450596B01CB5B43F0091532D /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 450596AF1CB5B43F0091532D /* camera.png */; };
+		4513EFAB1CCE8C8700C1F813 /* ImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4513EFAA1CCE8C8700C1F813 /* ImageUtil.swift */; };
 		4537BA0B1CBC3DFA00CEB381 /* RosterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA0A1CBC3DFA00CEB381 /* RosterTableViewController.swift */; };
 		4537BA0F1CBC3E6D00CEB381 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA0E1CBC3E6D00CEB381 /* Player.swift */; };
 		4537BA111CBC422D00CEB381 /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA101CBC422D00CEB381 /* FacebookService.swift */; };
@@ -62,6 +63,7 @@
 		450596A91CB4F55A0091532D /* MediaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
 		450596AB1CB59F8E0091532D /* quade.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = quade.jpg; sourceTree = "<group>"; };
 		450596AF1CB5B43F0091532D /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		4513EFAA1CCE8C8700C1F813 /* ImageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUtil.swift; sourceTree = "<group>"; };
 		4537BA0A1CBC3DFA00CEB381 /* RosterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterTableViewController.swift; sourceTree = "<group>"; };
 		4537BA0E1CBC3E6D00CEB381 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4537BA101CBC422D00CEB381 /* FacebookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				4537BA0E1CBC3E6D00CEB381 /* Player.swift */,
 				4537BA101CBC422D00CEB381 /* FacebookService.swift */,
 				4584975C1CBEDA4E00CDFF74 /* PlayerPhoto.swift */,
+				4513EFAA1CCE8C8700C1F813 /* ImageUtil.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				458497611CC5FA6C00CDFF74 /* PlayerDetailViewController.swift in Sources */,
 				4584975D1CBEDA4E00CDFF74 /* PlayerPhoto.swift in Sources */,
 				4537BA0B1CBC3DFA00CEB381 /* RosterTableViewController.swift in Sources */,
+				4513EFAB1CCE8C8700C1F813 /* ImageUtil.swift in Sources */,
 				45A63C4A1CAB1F0B00CE0DDC /* NDRugby.xcdatamodeld in Sources */,
 				450596A21CB452300091532D /* Message.swift in Sources */,
 				450596AA1CB4F55A0091532D /* MediaTableViewCell.swift in Sources */,
