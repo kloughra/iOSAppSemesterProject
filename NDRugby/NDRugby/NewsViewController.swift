@@ -12,7 +12,9 @@ import UIKit
 class NewsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let fb = FacebookService()
+    let fb2 = FireBaseService()
     var username:String?
+    var news:[Message] = []
     //For Authorized Users
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -32,6 +34,14 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
             (username) in
             self.username = username
         }
+        fb2.newsMessages{
+            (message) in
+            self.news.append(message)
+            self.tableView.reloadData()
+        }
+        
+        let newMessage = Message(text: "Hello!!", user: "Katie")
+        self.news.append(newMessage)
     }
     
     //Override to check for Authentication
@@ -59,36 +69,80 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        print(news.count)
+        tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
+    
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
      // #warning Incomplete implementation, return the number of sections
-     return 0
+        return 1
      }
      
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-     // #warning Incomplete implementation, return the number of rows
-     return 0
+        return news.count
      }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
+        if (self.news[indexPath.row].image) != nil{
+            print("Image")
+            let cell = tableView.dequeueReusableCellWithIdentifier("mediaCell", forIndexPath: indexPath) as! MediaNewsTableViewCell
+            //TEXT
+            if let label = cell.updateText{
+                label.text = self.news[indexPath.row].text
+                //var textView:UITextView = UITextView()
+                //textView.linkTextAttributes =
+            }
+            //IMAGE
+            //let image = UIImage(named:"temp_label")
+            let image = news[indexPath.row].image
+            cell.updateImage.image = image
+            return cell
+        }
+            //Message W/O Image
+        else{
+            //print("No Image")
+            print("No Image")
+            let cell = tableView.dequeueReusableCellWithIdentifier("normalCell", forIndexPath: indexPath) as! TextNewsTableViewCell
+            if let label = cell.updateText{
+                label.text = self.news[indexPath.row].text
+            }
+            return cell
+        }
+
      }
     
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "addSegue" {
+            if let consoleDetailViewController = segue.destinationViewController as? AddNewsViewController{
+                consoleDetailViewController.onDataAvailable = {[weak self]
+                    (message) in
+                    if let _ = self {
+                        //self!.news.append(message)
+                        self!.fb2.sendNewsMessage(message)
+                        self!.tableView.reloadData()
+                    }
+                }
+                    consoleDetailViewController.username = self.username
+                
+            }
+        }
      }
-     */
+ 
     
 }

@@ -22,6 +22,9 @@
 		4513EFB51CCFB6E400C1F813 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4513EFB41CCFB6E400C1F813 /* MapKit.framework */; };
 		4513EFB71CCFB95A00C1F813 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4513EFB61CCFB95A00C1F813 /* Pin.swift */; };
 		4513EFBC1CD06B6E00C1F813 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4513EFBB1CD06B6E00C1F813 /* NewsViewController.swift */; };
+		4513EFBE1CD08F3000C1F813 /* AddNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4513EFBD1CD08F3000C1F813 /* AddNewsViewController.swift */; };
+		4513EFC01CD10EA000C1F813 /* TextNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4513EFBF1CD10EA000C1F813 /* TextNewsTableViewCell.swift */; };
+		4513EFC21CD10EB700C1F813 /* MediaNewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4513EFC11CD10EB700C1F813 /* MediaNewsTableViewCell.swift */; };
 		4537BA0B1CBC3DFA00CEB381 /* RosterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA0A1CBC3DFA00CEB381 /* RosterTableViewController.swift */; };
 		4537BA0F1CBC3E6D00CEB381 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA0E1CBC3E6D00CEB381 /* Player.swift */; };
 		4537BA111CBC422D00CEB381 /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA101CBC422D00CEB381 /* FacebookService.swift */; };
@@ -74,6 +77,9 @@
 		4513EFB41CCFB6E400C1F813 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		4513EFB61CCFB95A00C1F813 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		4513EFBB1CD06B6E00C1F813 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		4513EFBD1CD08F3000C1F813 /* AddNewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewsViewController.swift; sourceTree = "<group>"; };
+		4513EFBF1CD10EA000C1F813 /* TextNewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextNewsTableViewCell.swift; sourceTree = "<group>"; };
+		4513EFC11CD10EB700C1F813 /* MediaNewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaNewsTableViewCell.swift; sourceTree = "<group>"; };
 		4537BA0A1CBC3DFA00CEB381 /* RosterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterTableViewController.swift; sourceTree = "<group>"; };
 		4537BA0E1CBC3E6D00CEB381 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4537BA101CBC422D00CEB381 /* FacebookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
@@ -159,6 +165,9 @@
 			isa = PBXGroup;
 			children = (
 				4513EFBB1CD06B6E00C1F813 /* NewsViewController.swift */,
+				4513EFBD1CD08F3000C1F813 /* AddNewsViewController.swift */,
+				4513EFBF1CD10EA000C1F813 /* TextNewsTableViewCell.swift */,
+				4513EFC11CD10EB700C1F813 /* MediaNewsTableViewCell.swift */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -501,9 +510,11 @@
 				4513EFAE1CCEAB8C00C1F813 /* HistoryViewController.swift in Sources */,
 				4584975F1CBEDFD900CDFF74 /* RosterTableViewCell.swift in Sources */,
 				45A63C781CAC701000CE0DDC /* MenuTableViewController.swift in Sources */,
+				4513EFBE1CD08F3000C1F813 /* AddNewsViewController.swift in Sources */,
 				458497631CC5FDCE00CDFF74 /* PhotoCollectionViewCell.swift in Sources */,
 				458497611CC5FA6C00CDFF74 /* PlayerDetailViewController.swift in Sources */,
 				4584975D1CBEDA4E00CDFF74 /* PlayerPhoto.swift in Sources */,
+				4513EFC01CD10EA000C1F813 /* TextNewsTableViewCell.swift in Sources */,
 				4537BA0B1CBC3DFA00CEB381 /* RosterTableViewController.swift in Sources */,
 				4513EFAB1CCE8C8700C1F813 /* ImageUtil.swift in Sources */,
 				45A63C4A1CAB1F0B00CE0DDC /* NDRugby.xcdatamodeld in Sources */,
@@ -514,6 +525,7 @@
 				4537BA111CBC422D00CEB381 /* FacebookService.swift in Sources */,
 				45051F381CB4408600C7600C /* FireBaseService.swift in Sources */,
 				45A63C421CAB1F0B00CE0DDC /* AppDelegate.swift in Sources */,
+				4513EFC21CD10EB700C1F813 /* MediaNewsTableViewCell.swift in Sources */,
 				450596A81CB4F5430091532D /* PlainMessageTableViewCell.swift in Sources */,
 				4584975B1CBEABF800CDFF74 /* SwiftyJSON.swift in Sources */,
 			);

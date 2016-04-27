@@ -95,25 +95,20 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var info = notification.userInfo!
         let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         self.textContraint = self.bottomContraint.constant
-        //self.prevButtonContraint = self.buttonConstraint.constant
         UIView.animateWithDuration(0.1, animations: { () -> Void in
             self.bottomContraint.constant = keyboardFrame.size.height + 20
-            //self.buttonConstraint.constant = keyboardFrame.size.height + 20
 
         })
     }
     func keyboardWillHide(notification : NSNotification) {
-        
         self.bottomContraint.constant = self.textContraint!
-        //self.buttonConstraint.constant = self.prevButtonContraint!
-
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ShareViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ShareViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         self.messageField.delegate = self;
         
         fb.shareMessages{
@@ -122,7 +117,7 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.tableView.reloadData()
         }
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tapDismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ShareViewController.tapDismissKeyboard))
         view.addGestureRecognizer(tap)
 
     }
@@ -130,6 +125,9 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tapDismissKeyboard() {
         view.endEditing(true)
     }
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -150,7 +148,7 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         //Message With Image
-        if let image_exists = self.messages[indexPath.row].image{
+        if (self.messages[indexPath.row].image) != nil{
             //print("Image")
             let cell = tableView.dequeueReusableCellWithIdentifier("imageCell", forIndexPath: indexPath) as! MediaTableViewCell
             //TEXT
