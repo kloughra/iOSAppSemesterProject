@@ -40,8 +40,8 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.tableView.reloadData()
         }
         
-        let newMessage = Message(text: "Hello!!", user: "Katie")
-        self.news.append(newMessage)
+        //let newMessage = Message(text: "Hello!!", user: "Katie")
+        //self.news.append(newMessage)
     }
     
     //Override to check for Authentication
@@ -94,7 +94,7 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if (self.news[indexPath.row].image) != nil{
-            print("Image")
+            //print("Image")
             let cell = tableView.dequeueReusableCellWithIdentifier("mediaCell", forIndexPath: indexPath) as! MediaNewsTableViewCell
             //TEXT
             if let label = cell.updateText{
@@ -111,7 +111,6 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
             //Message W/O Image
         else{
             //print("No Image")
-            print("No Image")
             let cell = tableView.dequeueReusableCellWithIdentifier("normalCell", forIndexPath: indexPath) as! TextNewsTableViewCell
             if let label = cell.updateText{
                 label.text = self.news[indexPath.row].text

@@ -80,6 +80,7 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func sendButton(sender: UIButton) {
         let newMessage = Message(text: messageField.text!, user: messageField.text!)
         newMessage.image = self.sendImage
+        newMessage.date = NSDate()
         fb.sendMessage(newMessage)
         messageField.text! = ""
         //self.sendImage = nil
@@ -101,7 +102,10 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
         })
     }
     func keyboardWillHide(notification : NSNotification) {
-        self.bottomContraint.constant = self.textContraint!
+        if let constraint = self.textContraint{
+            self.bottomContraint.constant = constraint
+        }
+        
     }
     
     override func viewDidLoad() {

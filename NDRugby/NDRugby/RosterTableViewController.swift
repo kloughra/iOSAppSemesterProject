@@ -14,8 +14,56 @@ class RosterTableViewController: UITableViewController {
     var borPhotos:[PlayerPhoto] = []
     let fb = FacebookService()
 
+
+    @IBAction func backButton(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    @IBAction func addButton(sender: UIBarButtonItem) {
+        print("Add Button")
+        //1. Create the alert controller.
+        let alert = UIAlertController(title: "Add Player", message: "Enter player information. Click OK to add to Roster", preferredStyle: .Alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.text = "Enter player name"
+        })
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.text = "Enter player position"
+        })
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.text = "Enter player major"
+        })
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.text = "Enter player hometown"
+        })
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.text = "Enter player year"
+        })
+        
+        //3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            let textField0 = alert.textFields![0] as UITextField
+            print("Text field: \(textField0.text)")
+            let textField1 = alert.textFields![1] as UITextField
+            print("Text field: \(textField1.text)")
+            let textField2 = alert.textFields![2] as UITextField
+            print("Text field: \(textField2.text)")
+            let textField3 = alert.textFields![3] as UITextField
+            print("Text field: \(textField3.text)")
+            let textField4 = alert.textFields![4] as UITextField
+            print("Text field: \(textField4.text)")
+        }))
+        
+        // 4. Present the alert.
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        
+    }
+    @IBOutlet weak var navOutlet: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.navOutlet.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(RosterTableViewController.addTapped))
+        
         let newPlayer = Player(firstName: "Katie", lastName: "Loughran", hometown: "South Bend, IN", year: "Senior", position: "8", major:"Computer Science")
         roster.append(newPlayer)
         let fb2 = FireBaseService()
@@ -39,6 +87,9 @@ class RosterTableViewController: UITableViewController {
         //fb.getName()
         
     }
+    /*func addTapped()->Void{
+        
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

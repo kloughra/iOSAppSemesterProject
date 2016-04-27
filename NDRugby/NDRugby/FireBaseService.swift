@@ -44,7 +44,7 @@ class FireBaseService{
     func shareMessages(closure: (message:Message) -> Void){
         var mesgs:[Message] = []
         let shareRef = myRef.childByAppendingPath("ShareTable/Messages")
-            shareRef.observeEventType(.ChildAdded, withBlock: { message in
+            shareRef.queryOrderedByKey().observeEventType(.ChildAdded, withBlock: { message in
                 let text:String = message.value.objectForKey("text") as! String
                 let user:String = message.key as String
                 var imageURL:UIImage?;
@@ -75,10 +75,10 @@ class FireBaseService{
             let base64String = data.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
             
             let jsonMessage = ["text":"\(message.text)","photoBase64":base64String]
-            shareRef.updateChildValues(["\(message.user)":jsonMessage])
+            shareRef.updateChildValues(["\(message.date)":jsonMessage])
         }else{
             let jsonMessage = ["text":"\(message.text)"]
-            shareRef.updateChildValues(["\(message.user)":jsonMessage])
+            shareRef.updateChildValues(["\(message.date)":jsonMessage])
         }
         
     }
