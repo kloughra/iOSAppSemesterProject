@@ -86,9 +86,9 @@ class PlayerDetailViewController: UIViewController, UICollectionViewDelegate, UI
         
         var size = fbPhoto.size
         size.width = size.width/3
-        size.width += 10
+        size.width += 50
         size.height = size.height/3
-        size.height += 10
+        size.height += 50
         return size
     }
     

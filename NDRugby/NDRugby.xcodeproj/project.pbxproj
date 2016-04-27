@@ -10,13 +10,18 @@
 		0627942A038141BAAC5B067F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A261851354E45B2BBBD6A85B /* Pods.framework */; };
 		45051F381CB4408600C7600C /* FireBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45051F371CB4408600C7600C /* FireBaseService.swift */; };
 		450596A21CB452300091532D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450596A11CB452300091532D /* Message.swift */; };
-		450596A41CB456A10091532D /* ShareTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450596A31CB456A10091532D /* ShareTableViewController.swift */; };
 		450596A61CB4DDAC0091532D /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450596A51CB4DDAC0091532D /* ShareViewController.swift */; };
 		450596A81CB4F5430091532D /* PlainMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450596A71CB4F5430091532D /* PlainMessageTableViewCell.swift */; };
 		450596AA1CB4F55A0091532D /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450596A91CB4F55A0091532D /* MediaTableViewCell.swift */; };
 		450596AC1CB59F8E0091532D /* quade.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 450596AB1CB59F8E0091532D /* quade.jpg */; };
 		450596B01CB5B43F0091532D /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 450596AF1CB5B43F0091532D /* camera.png */; };
 		4513EFAB1CCE8C8700C1F813 /* ImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4513EFAA1CCE8C8700C1F813 /* ImageUtil.swift */; };
+		4513EFAE1CCEAB8C00C1F813 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4513EFAD1CCEAB8C00C1F813 /* HistoryViewController.swift */; };
+		4513EFB01CCEADCE00C1F813 /* first_team.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4513EFAF1CCEADCE00C1F813 /* first_team.jpg */; };
+		4513EFB31CCF130B00C1F813 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4513EFB21CCF130B00C1F813 /* ScheduleViewController.swift */; };
+		4513EFB51CCFB6E400C1F813 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4513EFB41CCFB6E400C1F813 /* MapKit.framework */; };
+		4513EFB71CCFB95A00C1F813 /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4513EFB61CCFB95A00C1F813 /* Pin.swift */; };
+		4513EFBC1CD06B6E00C1F813 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4513EFBB1CD06B6E00C1F813 /* NewsViewController.swift */; };
 		4537BA0B1CBC3DFA00CEB381 /* RosterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA0A1CBC3DFA00CEB381 /* RosterTableViewController.swift */; };
 		4537BA0F1CBC3E6D00CEB381 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA0E1CBC3E6D00CEB381 /* Player.swift */; };
 		4537BA111CBC422D00CEB381 /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA101CBC422D00CEB381 /* FacebookService.swift */; };
@@ -57,13 +62,18 @@
 /* Begin PBXFileReference section */
 		45051F371CB4408600C7600C /* FireBaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseService.swift; sourceTree = "<group>"; };
 		450596A11CB452300091532D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		450596A31CB456A10091532D /* ShareTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareTableViewController.swift; sourceTree = "<group>"; };
 		450596A51CB4DDAC0091532D /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		450596A71CB4F5430091532D /* PlainMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlainMessageTableViewCell.swift; sourceTree = "<group>"; };
 		450596A91CB4F55A0091532D /* MediaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
 		450596AB1CB59F8E0091532D /* quade.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = quade.jpg; sourceTree = "<group>"; };
 		450596AF1CB5B43F0091532D /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		4513EFAA1CCE8C8700C1F813 /* ImageUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUtil.swift; sourceTree = "<group>"; };
+		4513EFAD1CCEAB8C00C1F813 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		4513EFAF1CCEADCE00C1F813 /* first_team.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = first_team.jpg; path = ../../../../../Desktop/first_team.jpg; sourceTree = "<group>"; };
+		4513EFB21CCF130B00C1F813 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		4513EFB41CCFB6E400C1F813 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4513EFB61CCFB95A00C1F813 /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
+		4513EFBB1CD06B6E00C1F813 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		4537BA0A1CBC3DFA00CEB381 /* RosterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterTableViewController.swift; sourceTree = "<group>"; };
 		4537BA0E1CBC3E6D00CEB381 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4537BA101CBC422D00CEB381 /* FacebookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
@@ -98,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4513EFB51CCFB6E400C1F813 /* MapKit.framework in Frameworks */,
 				0627942A038141BAAC5B067F /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,16 +133,40 @@
 		3C7C3E9337D4B7F86861964B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4513EFB41CCFB6E400C1F813 /* MapKit.framework */,
 				A261851354E45B2BBBD6A85B /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4513EFAC1CCEAB5C00C1F813 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				4513EFAD1CCEAB8C00C1F813 /* HistoryViewController.swift */,
+			);
+			name = History;
+			sourceTree = "<group>";
+		};
+		4513EFB11CCF12E000C1F813 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				4513EFB21CCF130B00C1F813 /* ScheduleViewController.swift */,
+			);
+			name = Schedule;
+			sourceTree = "<group>";
+		};
+		4513EFBA1CD04B8C00C1F813 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				4513EFBB1CD06B6E00C1F813 /* NewsViewController.swift */,
+			);
+			name = News;
 			sourceTree = "<group>";
 		};
 		4537BA0C1CBC3E3500CEB381 /* Share */ = {
 			isa = PBXGroup;
 			children = (
 				450596A51CB4DDAC0091532D /* ShareViewController.swift */,
-				450596A31CB456A10091532D /* ShareTableViewController.swift */,
 				450596A71CB4F5430091532D /* PlainMessageTableViewCell.swift */,
 				450596A91CB4F55A0091532D /* MediaTableViewCell.swift */,
 			);
@@ -215,11 +250,12 @@
 			isa = PBXGroup;
 			children = (
 				45051F371CB4408600C7600C /* FireBaseService.swift */,
+				4537BA101CBC422D00CEB381 /* FacebookService.swift */,
 				450596A11CB452300091532D /* Message.swift */,
 				4537BA0E1CBC3E6D00CEB381 /* Player.swift */,
-				4537BA101CBC422D00CEB381 /* FacebookService.swift */,
 				4584975C1CBEDA4E00CDFF74 /* PlayerPhoto.swift */,
 				4513EFAA1CCE8C8700C1F813 /* ImageUtil.swift */,
+				4513EFB61CCFB95A00C1F813 /* Pin.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -228,6 +264,9 @@
 			isa = PBXGroup;
 			children = (
 				45A63C771CAC701000CE0DDC /* MenuTableViewController.swift */,
+				4513EFBA1CD04B8C00C1F813 /* News */,
+				4513EFB11CCF12E000C1F813 /* Schedule */,
+				4513EFAC1CCEAB5C00C1F813 /* History */,
 				4537BA0D1CBC3E4900CEB381 /* Roster */,
 				4537BA0C1CBC3E3500CEB381 /* Share */,
 			);
@@ -237,6 +276,7 @@
 		45A63C751CAC6F7E00CE0DDC /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				4513EFAF1CCEADCE00C1F813 /* first_team.jpg */,
 				450596AF1CB5B43F0091532D /* camera.png */,
 				450596AB1CB59F8E0091532D /* quade.jpg */,
 				4595197C1CB3320300D0A200 /* temp_label.png */,
@@ -377,6 +417,7 @@
 			files = (
 				45A63C4F1CAB1F0B00CE0DDC /* LaunchScreen.storyboard in Resources */,
 				45A63C4C1CAB1F0B00CE0DDC /* Assets.xcassets in Resources */,
+				4513EFB01CCEADCE00C1F813 /* first_team.jpg in Resources */,
 				4595197D1CB3320300D0A200 /* temp_label.png in Resources */,
 				450596AC1CB59F8E0091532D /* quade.jpg in Resources */,
 				450596B01CB5B43F0091532D /* camera.png in Resources */,
@@ -454,8 +495,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4537BA0F1CBC3E6D00CEB381 /* Player.swift in Sources */,
+				4513EFB71CCFB95A00C1F813 /* Pin.swift in Sources */,
 				450596A61CB4DDAC0091532D /* ShareViewController.swift in Sources */,
 				458497651CC76DD600CDFF74 /* PlayerPhotoViewController.swift in Sources */,
+				4513EFAE1CCEAB8C00C1F813 /* HistoryViewController.swift in Sources */,
 				4584975F1CBEDFD900CDFF74 /* RosterTableViewCell.swift in Sources */,
 				45A63C781CAC701000CE0DDC /* MenuTableViewController.swift in Sources */,
 				458497631CC5FDCE00CDFF74 /* PhotoCollectionViewCell.swift in Sources */,
@@ -464,14 +507,15 @@
 				4537BA0B1CBC3DFA00CEB381 /* RosterTableViewController.swift in Sources */,
 				4513EFAB1CCE8C8700C1F813 /* ImageUtil.swift in Sources */,
 				45A63C4A1CAB1F0B00CE0DDC /* NDRugby.xcdatamodeld in Sources */,
+				4513EFB31CCF130B00C1F813 /* ScheduleViewController.swift in Sources */,
 				450596A21CB452300091532D /* Message.swift in Sources */,
+				4513EFBC1CD06B6E00C1F813 /* NewsViewController.swift in Sources */,
 				450596AA1CB4F55A0091532D /* MediaTableViewCell.swift in Sources */,
 				4537BA111CBC422D00CEB381 /* FacebookService.swift in Sources */,
 				45051F381CB4408600C7600C /* FireBaseService.swift in Sources */,
 				45A63C421CAB1F0B00CE0DDC /* AppDelegate.swift in Sources */,
 				450596A81CB4F5430091532D /* PlainMessageTableViewCell.swift in Sources */,
 				4584975B1CBEABF800CDFF74 /* SwiftyJSON.swift in Sources */,
-				450596A41CB456A10091532D /* ShareTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

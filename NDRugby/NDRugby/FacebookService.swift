@@ -28,6 +28,31 @@ class FacebookService{
         })*/
     }
     
+    func getUserName(closure:(username:String) -> Void)-> Void{
+        
+        var username:String = ""
+        let accessToken = FBSDKAccessToken.currentAccessToken()
+        let urlString = "https://graph.facebook.com/me?fields=name&access_token=\(accessToken.tokenString)"
+        let url = NSURL(string:urlString)
+        let request = NSMutableURLRequest(URL: url!)
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithRequest(request){
+            (data, responseText, error) -> Void in
+            if error != nil {
+                print(error)
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    let json = JSON(data: data!)
+                    username = json["name"].stringValue
+                    closure(username: username)
+                })
+                
+            }
+        }
+        task.resume()
+
+    }
+    
     func getProfPic() -> UIImage? {
         let id = 673683302689201
         let imgURLString = "https://graph.facebook.com/\(id)/picture?type=large" //type=normal
@@ -49,7 +74,6 @@ class FacebookService{
         let nameURLString = "https://graph.facebook.com/\(id)?fields=photos%7Bimages,name,tags,source%7D&access_token=\(access_token.tokenString)"
         let nameURL = NSURL(string: nameURLString)
         let request = NSMutableURLRequest(URL: nameURL!)
-        print("Because of Rugby")
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request){
             (data, responseText, error) -> Void in
@@ -58,16 +82,13 @@ class FacebookService{
             } else {
                 dispatch_async(dispatch_get_main_queue(), {
                     let json = JSON(data: data!)
-                    //print(json)
-                    print("JSON")
                     for(_,photo) in json["photos"]["data"]{
                         //add photo to an dictionary of photos and their tags
                         var tags = [String]()
-                        print("Photo")
                         //print("\(photo["id"]):")
                         for (_,tag) in photo["tags"]["data"]{
                             tags.append(tag["name"].stringValue)
-                            print("\(tag["name"].stringValue)")
+                            //print("\(tag["name"].stringValue)")
                         }
                         let newPhoto = PlayerPhoto(id:photo["id"].stringValue,source:photo["source"].stringValue)
                         //Only add photos with tags
@@ -124,8 +145,8 @@ class FacebookService{
                     //print(json)
                     for(_,album) in json["data"]{
                         
-                        if(album["name"].stringValue != "Cover Photos" && album["name"].stringValue != "Profile Pictures"){
-                            //print("\(album["name"])")
+                        if(album["name"].stringValue != "Cover Photos" && album["name"].stringValue != "Profile Pictures" && album["name"].stringValue != "Because of Rugby"){
+                            print("\(album["name"])")
                             album_ids.append(album["id"].stringValue)
                         }
                         

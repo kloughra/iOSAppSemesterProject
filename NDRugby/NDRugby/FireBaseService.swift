@@ -16,8 +16,8 @@ class FireBaseService{
     func getRoster(closure: (players:[Player]) -> Void){
         var plyrs:[Player] = []
         let shareRef = myRef.childByAppendingPath("Roster")
-        shareRef.observeEventType(.Value, withBlock: { player in
-            for child in player.children{
+        shareRef.observeEventType(.Value, withBlock: { roster in
+            for child in roster.children{
                 //print(child.value.objectForKey("major") as! String)
                 let major:String = child.value.objectForKey("major") as! String
                 let hometown:String = child.value.objectForKey("hometown") as! String
