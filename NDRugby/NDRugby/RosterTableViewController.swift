@@ -19,6 +19,7 @@ class RosterTableViewController: UITableViewController {
     let fb = FacebookService()
     let fb2 = FireBaseService()
     
+    //For Authentication
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
 
@@ -27,6 +28,8 @@ class RosterTableViewController: UITableViewController {
     }
     
     @IBOutlet weak var navOutlet: UINavigationItem!
+    
+    //Set Up View
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,18 +59,14 @@ class RosterTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return roster.count
     }
 
@@ -87,9 +86,7 @@ class RosterTableViewController: UITableViewController {
                         if let image = borImageCache[photo.source] {
                             let croppedImage: UIImage = ImageUtil.cropToSquare(image: image)
                             cell.playerPhoto.image = croppedImage
-                            //print("photo already here! \(self.roster[indexPath.row].firstName)")
                         }else{
-                            //print("had to fetch photo \(self.roster[indexPath.row].firstName)")
                             let im = fb.sourceImage(photo.source)
                             let croppedImage: UIImage = ImageUtil.cropToSquare(image: im!)
                             cell.playerPhoto.image = croppedImage
@@ -106,9 +103,7 @@ class RosterTableViewController: UITableViewController {
     }
 
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //NAVIGATION
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "playerDetailSegue" {
             if let playerDetailViewController = segue.destinationViewController as? PlayerDetailViewController,
@@ -118,6 +113,7 @@ class RosterTableViewController: UITableViewController {
                 var new_images:[UIImage] = []
                 var new_photos:[PlayerPhoto] = []
                 let name = "\(roster[indexPath.row].firstName) \(roster[indexPath.row].lastName)"
+                //Try to get photos from image cache
                 for photo in self.photos{
                     if let tags = photo.tags{
                         for tag in tags{
@@ -153,11 +149,9 @@ class RosterTableViewController: UITableViewController {
         }else if segue.identifier == "addPlayer"{
             shouldPerformSegueWithIdentifier("addPlayer", sender: sender)
             if let addPlayerViewController = segue.destinationViewController as? AddPlayerViewController{
-                print("Segue")
                 addPlayerViewController.onDataAvailable = {[weak self]
                     (player) in
                     if let _ = self {
-                        //self!.roster.append(player)
                         self!.fb2.addPlayerToRoster(player)
                         self!.tableView.reloadData()
                     }
@@ -165,6 +159,8 @@ class RosterTableViewController: UITableViewController {
             }
         }
     }
+    
+    
     
     //Override to check for Authentication
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {

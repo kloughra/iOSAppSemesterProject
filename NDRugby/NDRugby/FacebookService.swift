@@ -13,7 +13,6 @@ import FBSDKLoginKit
 
 class FacebookService{
     private var photos:[PlayerPhoto] = []
-    //var group:dispatch_group_t = dispatch_group_create()
     
     init(){
     }
@@ -81,13 +80,10 @@ class FacebookService{
                     for(_,photo) in json["photos"]["data"]{
                         //add photo to an dictionary of photos and their tags
                         var tags = [String]()
-                        //print("\(photo["id"]):")
                         for (_,tag) in photo["tags"]["data"]{
                             tags.append(tag["name"].stringValue)
-                            //print("\(tag["name"].stringValue)")
                         }
                         let newPhoto = PlayerPhoto(id:photo["id"].stringValue,source:photo["source"].stringValue)
-                        //Only add photos with tags
                         if tags.count > 0{
                             newPhoto.tags = tags
                             borPics.append(newPhoto)
@@ -119,10 +115,8 @@ class FacebookService{
         return nil
     }
     func images(closure:(images:[PlayerPhoto]) -> Void){
-        //if (fid != "") {
         let id = 673683302689201
         let access_token = FBSDKAccessToken.currentAccessToken()
-        //print("\(access_token.tokenString)")
         
         let nameURLString = "https://graph.facebook.com/\(id)/albums?fields=name&access_token=\(access_token.tokenString)" //type=normal
         let nameURL = NSURL(string: nameURLString)
@@ -134,21 +128,17 @@ class FacebookService{
             if error != nil {
                 print(error)
             } else {
-                //var inf = [String]()
                 var album_ids = [String]()
                 dispatch_async(dispatch_get_main_queue(), {
                     let json = JSON(data: data!)
-                    //print(json)
                     for(_,album) in json["data"]{
                         
                         if(album["name"].stringValue != "Cover Photos" && album["name"].stringValue != "Profile Pictures" && album["name"].stringValue != "Because of Rugby"){
-                            //print("\(album["name"])")
                             album_ids.append(album["id"].stringValue)
                         }
                         
                     }
                     self.get_album_photos(album_ids){
-                    //print(self.photos)
                         (im, count) in
                         if count >= album_ids.count{
                             closure(images: self.photos)
@@ -176,18 +166,14 @@ class FacebookService{
                 if error != nil {
                     print(error)
                 } else {
-                    //var inf = [String]()
                     dispatch_async(dispatch_get_main_queue(), {
                         cnt = cnt + 1;
                         let json = JSON(data: data!)
-                        //print(json)
                         for(_,photo) in json["photos"]["data"]{
                             //add photo to an dictionary of photos and their tags
                             var tags = [String]()
-                            //print("\(photo["id"]):")
                             for (_,tag) in photo["tags"]["data"]{
                                 tags.append(tag["name"].stringValue)
-                                //print("    \(tag["name"].stringValue)")
                             }
                             let newPhoto = PlayerPhoto(id:photo["id"].stringValue,source:photo["source"].stringValue)
                             //Only add photos with tags
@@ -198,12 +184,10 @@ class FacebookService{
                             
                             
                         }
-                        //print(cnt)
                         closure(images: self.photos, count: cnt)
                     })
                     
                 }
-                //print(self.photos)
             }
             task.resume()
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     var years = ["Freshman","Sophomore","Junior","Senior","Grad"]
     var position = [
@@ -26,6 +26,9 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var playerPosition:String?
     var playerYear:String?
     
+    
+    
+    //ACTION BUTTONS
     @IBAction func cancelButton(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -33,7 +36,7 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBAction func addButton(sender: AnyObject) {
         var empty:String?
         empty = ""
-        
+        //ADD ALERT - CANNOT EXIT WITH EMPTY FIELDS
         if playerName.text! == empty {
             let refreshAlert = UIAlertController(title: "Empty Field", message: "Please enter a name!", preferredStyle: UIAlertControllerStyle.Alert)
             
@@ -65,6 +68,8 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             dismissViewControllerAnimated(true, completion: nil)
         }
     }
+    
+    //SET UP VIEW
     override func viewDidLoad() {
         super.viewDidLoad()
         self.playerYear = "Freshman"
@@ -73,15 +78,22 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         self.yearPicker.delegate = self
         self.positionPicker.tag = 0
         self.yearPicker.tag = 1
+        self.playerHometown.delegate = self
+        self.playerMajor.delegate = self
+        self.playerName.delegate = self
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ShareViewController.tapDismissKeyboard))
+        view.addGestureRecognizer(tap)
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    //PICKER VIEW
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -98,10 +110,8 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)  {
             
             if pickerView.tag == 0 {
-                //print(self.position[row])
                 self.playerPosition = self.position[row]
             } else if pickerView.tag == 1 {
-                //print(self.years[row])
                 self.playerYear = self.years[row]
             }
     }
@@ -126,14 +136,5 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         return false
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

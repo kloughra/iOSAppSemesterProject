@@ -24,7 +24,6 @@ class ScheduleViewController: UIViewController, MKMapViewDelegate {
         let pin = Pin(coordinate: initialLocation.coordinate)
         self.stinsonMap.addAnnotation(pin)
         self.schedulePhoto.contentMode = .ScaleAspectFit
-        // Do any additional setup after loading the view.
     }
     
     let regionRadius: CLLocationDistance = 1000

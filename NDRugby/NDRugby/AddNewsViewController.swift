@@ -28,7 +28,6 @@ class AddNewsViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         let x:CGFloat = 0
         let y:CGFloat = 0
         self.updateTextField.frame = CGRect(x: x, y: y, width: self.updateToolbar.frame.size.width/2 - self.cameraButtonOutlet.width*2 - 25, height: self.updateToolbar.frame.size.height-10)
-        // Do any additional setup after loading the view.
         
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ShareViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
@@ -78,7 +77,7 @@ class AddNewsViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             newMessage.image = image
         }
         
-        //self.news!.append(newMessage)
+
         self.onDataAvailable?(message: newMessage)
         //send info / prepare for segue
         
@@ -104,7 +103,6 @@ class AddNewsViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             
             self.presentViewController(imagePicker, animated: true,
                                        completion: nil)
-            //newMedia = true
         }else{
             print("Camera Not Available")
         }
@@ -112,22 +110,12 @@ class AddNewsViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let mediaType = info[UIImagePickerControllerMediaType] as! String
-        
-        // Code here to work with media
-        
         self.dismissViewControllerAnimated(true, completion: nil)
         
         if mediaType == (kUTTypeImage as String) {
             let image = info[UIImagePickerControllerOriginalImage]
                 as! UIImage
             self.updatePhoto.image = image
-            /*if (newMedia == true) {
-             UIImageWriteToSavedPhotosAlbum(image, self,
-             "image:didFinishSavingWithError:contextInfo:", nil)
-             } else if mediaType.isEqualToString(kUTTypeMovie as! String) {
-             // Code to support video here
-             }*/
-            
         }
     }
     
@@ -141,16 +129,5 @@ class AddNewsViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

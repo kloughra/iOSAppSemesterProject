@@ -33,7 +33,6 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             self.presentViewController(imagePicker, animated: true,
                                        completion: nil)
-            //newMedia = true
         }else{
             print("Camera Not Available")
         }
@@ -120,7 +119,6 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

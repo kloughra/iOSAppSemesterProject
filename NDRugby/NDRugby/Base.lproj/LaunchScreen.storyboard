@@ -16,7 +16,20 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Icon-76.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZYK-U4-DeB">
+                                <rect key="frame" x="148" y="156" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="304" id="ZfM-CR-AVd"/>
+                                    <constraint firstAttribute="height" constant="287" id="qaS-hB-340"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.054566291179999997" green="0.89463350789999996" blue="0.43443008030000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZYK-U4-DeB" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="DQD-nx-tcf"/>
+                            <constraint firstItem="ZYK-U4-DeB" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dvW-aG-JJ3"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +37,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Icon-76.png" width="76" height="76"/>
+    </resources>
 </document>

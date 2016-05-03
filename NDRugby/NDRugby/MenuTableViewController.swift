@@ -18,6 +18,7 @@ class MenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         menu = ["History","Roster","Schedule","News & Updates", "Alumni","Share & Comment"]
+        //Facebook Login Button
         let fb = FacebookService()
         fb.requestFacebook(){
             (logButton) in
@@ -40,12 +41,7 @@ class MenuTableViewController: UITableViewController {
         if FBSDKAccessToken.currentAccessToken() != nil{
             authorized = true
         }
-        else{
-        }
-
-        if authorized == true{
-            
-        }else{
+        if authorized != true{
             let alert = UIAlertController(title: "Incorrect Credentials", message: "Please login to facebook to access that page!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)

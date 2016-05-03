@@ -13,33 +13,11 @@ import UIKit
 class FireBaseService{
     var myRef = Firebase(url:"https://ndwomensrugby.firebaseio.com")
     
-    //func getRoster(closure: (players:[Player]) -> Void){
     func getRoster(closure: (player:Player) -> Void){
         var plyrs:[Player] = []
         let shareRef = myRef.childByAppendingPath("Roster")
-        //shareRef.observeEventType(.Value, withBlock: { roster in
         shareRef.queryOrderedByKey().observeEventType(.ChildAdded, withBlock: { player in
-            
-            /*for child in roster.children{
-                //print(child.value.objectForKey("major") as! String)
-                let major:String = child.value.objectForKey("major") as! String
-                let hometown:String = child.value.objectForKey("hometown") as! String
-                let position:String = child.value.objectForKey("position") as! String
-                let year:String = child.value.objectForKey("year") as! String
-                let fullName:String = child.key as String
-                let fullNameArr = fullName.characters.split{$0 == " "}.map(String.init)
-                let firstName = fullNameArr[0]
-                var lastName = ""
-                if fullNameArr.count > 1{
-                    lastName = fullNameArr[1]
-                }
-                let newPlayer = Player(firstName: firstName, lastName: lastName, hometown: hometown, year: year, position: position, major: major)
-                 
-                //closure(player:newPlayer)
-                plyrs.append(newPlayer);
-            }
-            closure(players:plyrs)
- */
+
             let major:String = player.value.objectForKey("major") as! String
             let hometown:String = player.value.objectForKey("hometown") as! String
             let position:String = player.value.objectForKey("position") as! String
