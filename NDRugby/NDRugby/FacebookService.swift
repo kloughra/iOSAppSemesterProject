@@ -23,6 +23,7 @@ class FacebookService{
         closure(logButton: loginButton)
     }
     
+    
     func getUserName(closure:(username:String) -> Void)-> Void{
         
         var username:String = ""

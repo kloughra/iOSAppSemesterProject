@@ -181,7 +181,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="woL-Zq-kSD" kind="show" id="2L1-bZ-PfD"/>
+                                            <segue destination="woL-Zq-kSD" kind="show" identifier="shareSegue" id="2L1-bZ-PfD"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
