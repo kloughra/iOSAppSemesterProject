@@ -70,7 +70,6 @@ class PlayerDetailViewController: UIViewController, UICollectionViewDelegate, UI
     }
     
     func imageTap(sender:UITapGestureRecognizer!) {
-        print("TAP")
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -103,19 +102,12 @@ class PlayerDetailViewController: UIViewController, UICollectionViewDelegate, UI
         if segue.identifier == "showPhoto" {
             if let playerPhotoViewController = segue.destinationViewController as? PlayerPhotoViewController, cell = sender as? UICollectionViewCell,
                 indexPath = self.fbCollectionView.indexPathForCell(cell){
-                let im = fb.sourceImage(photos[indexPath.row].source)
-                print(images[indexPath.row])
-                    
+                //let im = fb.sourceImage(photos[indexPath.row].source)
                 playerPhotoViewController.photo = images[indexPath.row]
 
             }
         }
     }
-    
-    
-    
-    
-
 }
 
 

@@ -12,6 +12,9 @@ class RosterTableViewController: UITableViewController {
     var roster:[Player] = []
     var photos:[PlayerPhoto] = []
     var borPhotos:[PlayerPhoto] = []
+    var imageCache = [String:UIImage]()
+    var borImageCache = [String:UIImage]()
+    
     let fb = FacebookService()
     let fb2 = FireBaseService()
 
@@ -72,9 +75,19 @@ class RosterTableViewController: UITableViewController {
             if let tags = photo.tags{
                 for tag in tags{
                     if tag.lowercaseString.rangeOfString(name.lowercaseString) != nil {
-                        let im = fb.sourceImage(photo.source)
-                        let croppedImage: UIImage = ImageUtil.cropToSquare(image: im!)
-                        cell.playerPhoto.image = croppedImage
+                        //Check if Image is already cached
+                        if let image = borImageCache[photo.source] {
+                            let croppedImage: UIImage = ImageUtil.cropToSquare(image: image)
+                            cell.playerPhoto.image = croppedImage
+                            //print("photo already here! \(self.roster[indexPath.row].firstName)")
+                        }else{
+                            //print("had to fetch photo \(self.roster[indexPath.row].firstName)")
+                            let im = fb.sourceImage(photo.source)
+                            let croppedImage: UIImage = ImageUtil.cropToSquare(image: im!)
+                            cell.playerPhoto.image = croppedImage
+                            self.borImageCache[photo.source] = im
+                                
+                        }
                     }
                 }
             }
@@ -101,7 +114,14 @@ class RosterTableViewController: UITableViewController {
                     if let tags = photo.tags{
                         for tag in tags{
                             if tag.lowercaseString.rangeOfString(name.lowercaseString) != nil {
-                                new_images.append(fb.sourceImage(photo.source)!)
+                                if let image = imageCache[photo.source] {
+                                    new_images.append(image)
+                                }else{
+                                    let im = fb.sourceImage(photo.source)
+                                    new_images.append(im!)
+                                    self.imageCache[photo.source] = im
+                                    
+                                }
                                 new_photos.append(photo)
                             }
                         }
@@ -116,7 +136,6 @@ class RosterTableViewController: UITableViewController {
                         }
                     }
                 }
-                print(roster[indexPath.row].hometown)
                 playerDetailViewController.player = self.roster[indexPath.row]
                 
                 playerDetailViewController.images = new_images
@@ -125,6 +144,7 @@ class RosterTableViewController: UITableViewController {
             }
         }else if segue.identifier == "addPlayer"{
             if let addPlayerViewController = segue.destinationViewController as? AddPlayerViewController{
+                print("Segue")
                 addPlayerViewController.onDataAvailable = {[weak self]
                     (player) in
                     if let _ = self {
