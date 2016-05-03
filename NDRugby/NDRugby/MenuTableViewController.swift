@@ -27,8 +27,6 @@ class MenuTableViewController: UITableViewController {
             
         }
         tableView.scrollEnabled = false;
-        print("Login Status:")
-        
     }
 
     override func didReceiveMemoryWarning() {

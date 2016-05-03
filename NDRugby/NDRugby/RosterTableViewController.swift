@@ -14,9 +14,12 @@ class RosterTableViewController: UITableViewController {
     var borPhotos:[PlayerPhoto] = []
     var imageCache = [String:UIImage]()
     var borImageCache = [String:UIImage]()
+    var username:String?
     
     let fb = FacebookService()
     let fb2 = FireBaseService()
+    
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
 
     @IBAction func backButton(sender: AnyObject) {
@@ -42,6 +45,11 @@ class RosterTableViewController: UITableViewController {
             (photos) in
             self.borPhotos = photos
             self.tableView.reloadData()
+        }
+        
+        fb.getUserName(){
+            (username) in
+            self.username = username
         }
         
     }
@@ -143,6 +151,7 @@ class RosterTableViewController: UITableViewController {
                 
             }
         }else if segue.identifier == "addPlayer"{
+            shouldPerformSegueWithIdentifier("addPlayer", sender: sender)
             if let addPlayerViewController = segue.destinationViewController as? AddPlayerViewController{
                 print("Segue")
                 addPlayerViewController.onDataAvailable = {[weak self]
@@ -155,6 +164,22 @@ class RosterTableViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    //Override to check for Authentication
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        var authorized:Bool = false
+        for name in self.appDelegate.authorized_users{
+            if self.username == name{
+                authorized = true
+            }
+        }
+        if authorized != true{
+            let alert = UIAlertController(title: "Incorrect Credentials", message: "Sorry, you are not authorized to add new players.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        return authorized
     }
     
     

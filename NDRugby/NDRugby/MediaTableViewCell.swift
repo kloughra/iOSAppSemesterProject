@@ -13,7 +13,7 @@ class MediaTableViewCell: UITableViewCell {
 
     @IBOutlet weak var shareImage: UIImageView!
     @IBOutlet weak var shareLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

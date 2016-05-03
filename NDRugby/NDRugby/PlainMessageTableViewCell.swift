@@ -10,6 +10,7 @@ import UIKit
 
 class PlainMessageTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var shareLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
