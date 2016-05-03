@@ -16,9 +16,11 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         "Fly Half","Center","Wing","Full Back"
     ]
     
+    var onDataAvailable : ((player: Player) -> ())?
+    
     @IBOutlet weak var playerName: UITextField!
-
     @IBOutlet weak var playerMajor: UITextField!
+    @IBOutlet weak var playerHometown: UITextField!
     @IBOutlet weak var positionPicker: UIPickerView!
     @IBOutlet weak var yearPicker: UIPickerView!
     var playerPosition:String?
@@ -45,11 +47,21 @@ class AddPlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
             }))
             presentViewController(refreshAlert, animated: true, completion: nil)
+        }else if playerHometown.text! == empty{
+            let refreshAlert = UIAlertController(title: "Empty Field", message: "Please enter a hometown!", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            }))
+            presentViewController(refreshAlert, animated: true, completion: nil)
         }else{
-            print(playerName.text!)
-            print(playerMajor.text!)
-            print(playerPosition!)
-            print(playerYear!)
+            let fullNameArr = playerName.text!.characters.split{$0 == " "}.map(String.init)
+            let firstName = fullNameArr[0]
+            var lastName = ""
+            if fullNameArr.count > 1{
+                lastName = fullNameArr[1]
+            }
+            let newPlayer = Player(firstName: firstName, lastName: lastName, hometown: playerHometown.text!, year: playerYear!, position: playerPosition!, major: playerMajor.text!)
+            self.onDataAvailable?(player: newPlayer)
             dismissViewControllerAnimated(true, completion: nil)
         }
     }

@@ -13,63 +13,20 @@ class RosterTableViewController: UITableViewController {
     var photos:[PlayerPhoto] = []
     var borPhotos:[PlayerPhoto] = []
     let fb = FacebookService()
+    let fb2 = FireBaseService()
 
 
     @IBAction func backButton(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    @IBAction func addButton(sender: UIBarButtonItem) {
-        print("Add Button")
-        //1. Create the alert controller.
-        let alert = UIAlertController(title: "Add Player", message: "Enter player information. Click OK to add to Roster", preferredStyle: .Alert)
-        
-        //2. Add the text field. You can configure it however you need.
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = "Enter player name"
-        })
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = "Enter player position"
-        })
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = "Enter player major"
-        })
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = "Enter player hometown"
-        })
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = "Enter player year"
-        })
-        
-        //3. Grab the value from the text field, and print it when the user clicks OK.
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-            let textField0 = alert.textFields![0] as UITextField
-            print("Text field: \(textField0.text)")
-            let textField1 = alert.textFields![1] as UITextField
-            print("Text field: \(textField1.text)")
-            let textField2 = alert.textFields![2] as UITextField
-            print("Text field: \(textField2.text)")
-            let textField3 = alert.textFields![3] as UITextField
-            print("Text field: \(textField3.text)")
-            let textField4 = alert.textFields![4] as UITextField
-            print("Text field: \(textField4.text)")
-        }))
-        
-        // 4. Present the alert.
-        self.presentViewController(alert, animated: true, completion: nil)
-        
-        
-    }
+    
     @IBOutlet weak var navOutlet: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navOutlet.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(RosterTableViewController.addTapped))
         
-        let newPlayer = Player(firstName: "Katie", lastName: "Loughran", hometown: "South Bend, IN", year: "Senior", position: "8", major:"Computer Science")
-        roster.append(newPlayer)
-        let fb2 = FireBaseService()
         fb2.getRoster(){
-            (roster) in
-                self.roster = roster
+            (player) in
+                self.roster.append(player)
                 self.tableView.reloadData()
         }
         
@@ -78,18 +35,13 @@ class RosterTableViewController: UITableViewController {
             self.photos = photos
         }
         
-        fb.getBecauseOfRugby(){
+        fb.getBecauseOfRugby(self.roster){
             (photos) in
             self.borPhotos = photos
+            self.tableView.reloadData()
         }
-        let im:UIImage = fb.getProfPic()!
-        newPlayer.photo = im
-        //fb.getName()
         
     }
-    /*func addTapped()->Void{
-        
-    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -121,7 +73,6 @@ class RosterTableViewController: UITableViewController {
                 for tag in tags{
                     if tag.lowercaseString.rangeOfString(name.lowercaseString) != nil {
                         let im = fb.sourceImage(photo.source)
-                        //cell.playerPhoto.image = im//cropToBounds(im!, width: 128, height: 128)
                         let croppedImage: UIImage = ImageUtil.cropToSquare(image: im!)
                         cell.playerPhoto.image = croppedImage
                     }
@@ -150,7 +101,6 @@ class RosterTableViewController: UITableViewController {
                     if let tags = photo.tags{
                         for tag in tags{
                             if tag.lowercaseString.rangeOfString(name.lowercaseString) != nil {
-                                //print("Photo with tag \(name)")
                                 new_images.append(fb.sourceImage(photo.source)!)
                                 new_photos.append(photo)
                             }
@@ -172,6 +122,17 @@ class RosterTableViewController: UITableViewController {
                 playerDetailViewController.images = new_images
                 playerDetailViewController.photos = new_photos
                 
+            }
+        }else if segue.identifier == "addPlayer"{
+            if let addPlayerViewController = segue.destinationViewController as? AddPlayerViewController{
+                addPlayerViewController.onDataAvailable = {[weak self]
+                    (player) in
+                    if let _ = self {
+                        //self!.roster.append(player)
+                        self!.fb2.addPlayerToRoster(player)
+                        self!.tableView.reloadData()
+                    }
+                }
             }
         }
     }

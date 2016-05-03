@@ -21,11 +21,6 @@ class FacebookService{
     func requestFacebook(closure: (logButton:FBSDKLoginButton) -> Void){
         let loginButton:FBSDKLoginButton = FBSDKLoginButton()
         closure(logButton: loginButton)
-        /*
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            var x = 3
-        })*/
     }
     
     func getUserName(closure:(username:String) -> Void)-> Void{
@@ -66,7 +61,7 @@ class FacebookService{
             return nil
     }
     
-    func getBecauseOfRugby(closure:(images:[PlayerPhoto]) -> Void){
+    func getBecauseOfRugby(roster:[Player],closure:(images:[PlayerPhoto]) -> Void){
         var borPics:[PlayerPhoto] = []
         let id = 1069442799779914
         let access_token = FBSDKAccessToken.currentAccessToken()
@@ -146,7 +141,7 @@ class FacebookService{
                     for(_,album) in json["data"]{
                         
                         if(album["name"].stringValue != "Cover Photos" && album["name"].stringValue != "Profile Pictures" && album["name"].stringValue != "Because of Rugby"){
-                            print("\(album["name"])")
+                            //print("\(album["name"])")
                             album_ids.append(album["id"].stringValue)
                         }
                         
