@@ -60,8 +60,6 @@ class AddNewsViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         })
      }
     
-    //Errored here one time
-    
      func keyboardWillHide(notification : NSNotification) {
         if let constraint = self.textContraint{
             self.bottomContraint.constant = constraint
