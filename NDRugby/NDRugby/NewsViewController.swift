@@ -30,18 +30,17 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Facebook
         fb.getUserName(){
             (username) in
             self.username = username
         }
+        //Firebase
         fb2.newsMessages{
             (message) in
             self.news.append(message)
             self.tableView.reloadData()
         }
-        
-        //let newMessage = Message(text: "Hello!!", user: "Katie")
-        //self.news.append(newMessage)
     }
     
     //Override to check for Authentication
@@ -94,23 +93,18 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if (self.news[indexPath.row].image) != nil{
-            //print("Image")
             let cell = tableView.dequeueReusableCellWithIdentifier("mediaCell", forIndexPath: indexPath) as! MediaNewsTableViewCell
             //TEXT
             if let label = cell.updateText{
                 label.text = self.news[indexPath.row].text
-                //var textView:UITextView = UITextView()
-                //textView.linkTextAttributes =
             }
             //IMAGE
-            //let image = UIImage(named:"temp_label")
             let image = news[indexPath.row].image
             cell.updateImage.image = image
             return cell
         }
             //Message W/O Image
         else{
-            //print("No Image")
             let cell = tableView.dequeueReusableCellWithIdentifier("normalCell", forIndexPath: indexPath) as! TextNewsTableViewCell
             if let label = cell.updateText{
                 label.text = self.news[indexPath.row].text
@@ -132,7 +126,6 @@ class NewsViewController: UIViewController, UITableViewDelegate, UITableViewData
                 consoleDetailViewController.onDataAvailable = {[weak self]
                     (message) in
                     if let _ = self {
-                        //self!.news.append(message)
                         self!.fb2.sendNewsMessage(message)
                         self!.tableView.reloadData()
                     }

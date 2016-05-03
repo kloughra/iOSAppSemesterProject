@@ -1,0 +1,57 @@
+Katie Loughran
+Mobile Apps
+03 May 2016
+Final Project
+
+========================
+========================
+Notre Dame Women's Rugby
+========================
+========================
+
+
+
+Here's some links I referenced when working on my project:
+
+
+http://stackoverflow.com/questions/24318480/passing-data-in-swift
+https://developers.facebook.com/docs/facebook-login/ios#permissions
+https://developer.apple.com/library/ios/technotes/tn2154/_index.html
+https://developers.facebook.com/tools/explorer/
+https://www.firebase.com/docs/ios/guide/retrieving-data.html
+https://developers.facebook.com/docs/ios/getting-started/advanced#swift
+http://stackoverflow.com/questions/29277494/integration-new-facebook-sdk-by-swift
+https://www.youtube.com/watch?v=WteK95AppF4
+
+
+
+
+
+=====
+Usage
+=====
+
+The app opens up to a table view on top of a Facebook Login button. You must log into Facebook before
+really using the app. If you try to access the different options, an alert will pop up and tell you to log in.
+
+The top of the list is a History section. Clicking on this will lead the user to a very simple view control with a
+blurb about the history of the club.
+
+The next is a team roster. Clicking here leads you to a list of the players. A + button at the top right hand corner
+checks your credentials via Facebook and if you are authorized, leads you to another view controller that allows
+a user to enter information about a new player. There are checks against wrong input (except for if the name you enetered
+is not a Facebook user or on the rugby team. This will not break the app, but no photos will be found). You can add or cancel.
+Back at the Roster you can click on any player and this will lead you to a view containing additional info about each player
+and searches the ND Women's Rugby Page for photos of them in action. You can scroll through those photos, and clickin on one
+will lead you one step further to a blown up version of the photo.
+
+The next is a Schedule. This is another fairly simpler view controller. This loads a map with a pin in the ND Rugby field
+so it can be viewed where it is on campus. Below that is a sinmple scrollable schedule in plain text and a photo of 
+players on the home field in action.
+
+Next is a News & Updates section. This section is for all users to view and administrators to add to. You can see here
+news and updates, but if you try to add an update, an alert will direct you to the Share & Comment section. Otherwise,
+clicking the + button will lead to another view control allowing you to add text, a photo or both.
+
+Finally is the Share & Comment section, similar to the News & Updates section, which any user can add to and view. Due to
+time constraints, the user name is not added, I broke it when I tried last to add.

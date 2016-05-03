@@ -12,64 +12,30 @@ class RosterTableViewController: UITableViewController {
     var roster:[Player] = []
     var photos:[PlayerPhoto] = []
     var borPhotos:[PlayerPhoto] = []
+    var imageCache = [String:UIImage]()
+    var borImageCache = [String:UIImage]()
+    var username:String?
+    
     let fb = FacebookService()
+    let fb2 = FireBaseService()
+    
+    //For Authentication
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
 
     @IBAction func backButton(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    @IBAction func addButton(sender: UIBarButtonItem) {
-        print("Add Button")
-        //1. Create the alert controller.
-        let alert = UIAlertController(title: "Add Player", message: "Enter player information. Click OK to add to Roster", preferredStyle: .Alert)
-        
-        //2. Add the text field. You can configure it however you need.
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = "Enter player name"
-        })
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = "Enter player position"
-        })
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = "Enter player major"
-        })
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = "Enter player hometown"
-        })
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-            textField.text = "Enter player year"
-        })
-        
-        //3. Grab the value from the text field, and print it when the user clicks OK.
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
-            let textField0 = alert.textFields![0] as UITextField
-            print("Text field: \(textField0.text)")
-            let textField1 = alert.textFields![1] as UITextField
-            print("Text field: \(textField1.text)")
-            let textField2 = alert.textFields![2] as UITextField
-            print("Text field: \(textField2.text)")
-            let textField3 = alert.textFields![3] as UITextField
-            print("Text field: \(textField3.text)")
-            let textField4 = alert.textFields![4] as UITextField
-            print("Text field: \(textField4.text)")
-        }))
-        
-        // 4. Present the alert.
-        self.presentViewController(alert, animated: true, completion: nil)
-        
-        
-    }
+    
     @IBOutlet weak var navOutlet: UINavigationItem!
+    
+    //Set Up View
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navOutlet.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(RosterTableViewController.addTapped))
         
-        let newPlayer = Player(firstName: "Katie", lastName: "Loughran", hometown: "South Bend, IN", year: "Senior", position: "8", major:"Computer Science")
-        roster.append(newPlayer)
-        let fb2 = FireBaseService()
         fb2.getRoster(){
-            (roster) in
-                self.roster = roster
+            (player) in
+                self.roster.append(player)
                 self.tableView.reloadData()
         }
         
@@ -78,33 +44,29 @@ class RosterTableViewController: UITableViewController {
             self.photos = photos
         }
         
-        fb.getBecauseOfRugby(){
+        fb.getBecauseOfRugby(self.roster){
             (photos) in
             self.borPhotos = photos
+            self.tableView.reloadData()
         }
-        let im:UIImage = fb.getProfPic()!
-        newPlayer.photo = im
-        //fb.getName()
+        
+        fb.getUserName(){
+            (username) in
+            self.username = username
+        }
         
     }
-    /*func addTapped()->Void{
-        
-    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return roster.count
     }
 
@@ -120,10 +82,17 @@ class RosterTableViewController: UITableViewController {
             if let tags = photo.tags{
                 for tag in tags{
                     if tag.lowercaseString.rangeOfString(name.lowercaseString) != nil {
-                        let im = fb.sourceImage(photo.source)
-                        //cell.playerPhoto.image = im//cropToBounds(im!, width: 128, height: 128)
-                        let croppedImage: UIImage = ImageUtil.cropToSquare(image: im!)
-                        cell.playerPhoto.image = croppedImage
+                        //Check if Image is already cached
+                        if let image = borImageCache[photo.source] {
+                            let croppedImage: UIImage = ImageUtil.cropToSquare(image: image)
+                            cell.playerPhoto.image = croppedImage
+                        }else{
+                            let im = fb.sourceImage(photo.source)
+                            let croppedImage: UIImage = ImageUtil.cropToSquare(image: im!)
+                            cell.playerPhoto.image = croppedImage
+                            self.borImageCache[photo.source] = im
+                                
+                        }
                     }
                 }
             }
@@ -134,9 +103,7 @@ class RosterTableViewController: UITableViewController {
     }
 
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //NAVIGATION
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "playerDetailSegue" {
             if let playerDetailViewController = segue.destinationViewController as? PlayerDetailViewController,
@@ -146,12 +113,19 @@ class RosterTableViewController: UITableViewController {
                 var new_images:[UIImage] = []
                 var new_photos:[PlayerPhoto] = []
                 let name = "\(roster[indexPath.row].firstName) \(roster[indexPath.row].lastName)"
+                //Try to get photos from image cache
                 for photo in self.photos{
                     if let tags = photo.tags{
                         for tag in tags{
                             if tag.lowercaseString.rangeOfString(name.lowercaseString) != nil {
-                                //print("Photo with tag \(name)")
-                                new_images.append(fb.sourceImage(photo.source)!)
+                                if let image = imageCache[photo.source] {
+                                    new_images.append(image)
+                                }else{
+                                    let im = fb.sourceImage(photo.source)
+                                    new_images.append(im!)
+                                    self.imageCache[photo.source] = im
+                                    
+                                }
                                 new_photos.append(photo)
                             }
                         }
@@ -166,14 +140,42 @@ class RosterTableViewController: UITableViewController {
                         }
                     }
                 }
-                print(roster[indexPath.row].hometown)
                 playerDetailViewController.player = self.roster[indexPath.row]
                 
                 playerDetailViewController.images = new_images
                 playerDetailViewController.photos = new_photos
                 
             }
+        }else if segue.identifier == "addPlayer"{
+            shouldPerformSegueWithIdentifier("addPlayer", sender: sender)
+            if let addPlayerViewController = segue.destinationViewController as? AddPlayerViewController{
+                addPlayerViewController.onDataAvailable = {[weak self]
+                    (player) in
+                    if let _ = self {
+                        self!.fb2.addPlayerToRoster(player)
+                        self!.tableView.reloadData()
+                    }
+                }
+            }
         }
+    }
+    
+    
+    
+    //Override to check for Authentication
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        var authorized:Bool = false
+        for name in self.appDelegate.authorized_users{
+            if self.username == name{
+                authorized = true
+            }
+        }
+        if authorized != true{
+            let alert = UIAlertController(title: "Incorrect Credentials", message: "Sorry, you are not authorized to add new players.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        return authorized
     }
     
     

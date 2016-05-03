@@ -27,7 +27,6 @@ class PlayerDetailViewController: UIViewController, UICollectionViewDelegate, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let fb = FacebookService()
 
         self.fbCollectionView.dataSource = self
         self.fbCollectionView.delegate = self
@@ -44,12 +43,10 @@ class PlayerDetailViewController: UIViewController, UICollectionViewDelegate, UI
             let im = fb.sourceImage(mainP.source)
             self.playerPhoto.image = im
         }
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -65,12 +62,10 @@ class PlayerDetailViewController: UIViewController, UICollectionViewDelegate, UI
         cell.fbImageView.userInteractionEnabled = true
         cell.fbImageView.addGestureRecognizer(imageTapRecognizer)
 
-        // Configure the cell
         return cell
     }
     
     func imageTap(sender:UITapGestureRecognizer!) {
-        print("TAP")
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -83,7 +78,6 @@ class PlayerDetailViewController: UIViewController, UICollectionViewDelegate, UI
                                sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
         let fbPhoto =  images[indexPath.item]
-        
         var size = fbPhoto.size
         size.width = size.width/3
         size.width += 50
@@ -96,26 +90,15 @@ class PlayerDetailViewController: UIViewController, UICollectionViewDelegate, UI
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         if segue.identifier == "showPhoto" {
             if let playerPhotoViewController = segue.destinationViewController as? PlayerPhotoViewController, cell = sender as? UICollectionViewCell,
                 indexPath = self.fbCollectionView.indexPathForCell(cell){
-                let im = fb.sourceImage(photos[indexPath.row].source)
-                print(images[indexPath.row])
-                    
                 playerPhotoViewController.photo = images[indexPath.row]
 
             }
         }
     }
-    
-    
-    
-    
-
 }
 
 

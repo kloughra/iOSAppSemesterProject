@@ -16,43 +16,41 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var prevButtonContraint:CGFloat?
     let fb = FireBaseService();
 
-    @IBOutlet weak var bottomContraint: NSLayoutConstraint!
-    @IBOutlet weak var buttonConstraint: NSLayoutConstraint!
+
+    @IBOutlet weak var toolBarConstraint: NSLayoutConstraint!
     
-    @IBAction func cameraButton(sender: UIButton) {
-        print("here")
-        
+    @IBAction func cameraAction(sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(
             UIImagePickerControllerSourceType.PhotoLibrary) {
-                
-                let imagePicker = UIImagePickerController()
-                
-                imagePicker.delegate = self
-                imagePicker.sourceType =
-                    UIImagePickerControllerSourceType.PhotoLibrary
-                imagePicker.mediaTypes = [kUTTypeImage as NSString as String]
-                imagePicker.allowsEditing = false
-                
-                self.presentViewController(imagePicker, animated: true, 
-                    completion: nil)
-                //newMedia = true
+            
+            let imagePicker = UIImagePickerController()
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType =
+                UIImagePickerControllerSourceType.PhotoLibrary
+            imagePicker.mediaTypes = [kUTTypeImage as NSString as String]
+            imagePicker.allowsEditing = false
+            
+            self.presentViewController(imagePicker, animated: true,
+                                       completion: nil)
         }else{
             print("Camera Not Available")
         }
-        
-        
-    }
-    
-    /*
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        <#code#>
     }
 
-    */
+    @IBAction func shareButton(sender: UIBarButtonItem) {
+        let newMessage = Message(text: messageField.text!, user: messageField.text!)
+        newMessage.image = self.sendImage
+        newMessage.date = NSDate()
+        fb.sendMessage(newMessage)
+        messageField.text! = ""
+        self.sendImage = nil
+        self.tableView.reloadData()
+    }
+    
+
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let mediaType = info[UIImagePickerControllerMediaType] as! String
-        
-        // Code here to work with media
         
         self.dismissViewControllerAnimated(true, completion: nil)
         
@@ -60,12 +58,6 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let image = info[UIImagePickerControllerOriginalImage]
                 as! UIImage
             self.sendImage = image
-            /*if (newMedia == true) {
-                UIImageWriteToSavedPhotosAlbum(image, self,
-                    "image:didFinishSavingWithError:contextInfo:", nil)
-            } else if mediaType.isEqualToString(kUTTypeMovie as! String) {
-                // Code to support video here
-            }*/
             
         }
     }
@@ -77,15 +69,6 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var tableView: UITableView!
-    @IBAction func sendButton(sender: UIButton) {
-        let newMessage = Message(text: messageField.text!, user: messageField.text!)
-        newMessage.image = self.sendImage
-        newMessage.date = NSDate()
-        fb.sendMessage(newMessage)
-        messageField.text! = ""
-        //self.sendImage = nil
-        self.tableView.reloadData()
-    }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -95,15 +78,15 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func keyboardWillShow(notification: NSNotification) {
         var info = notification.userInfo!
         let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-        self.textContraint = self.bottomContraint.constant
+        self.textContraint = self.toolBarConstraint.constant
         UIView.animateWithDuration(0.1, animations: { () -> Void in
-            self.bottomContraint.constant = keyboardFrame.size.height + 20
+            self.toolBarConstraint.constant = keyboardFrame.size.height + 20
 
         })
     }
     func keyboardWillHide(notification : NSNotification) {
         if let constraint = self.textContraint{
-            self.bottomContraint.constant = constraint
+            self.toolBarConstraint.constant = constraint
         }
         
     }
@@ -123,6 +106,8 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ShareViewController.tapDismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        self.tableView.rowHeight = 317
 
     }
     
@@ -130,19 +115,16 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
         view.endEditing(true)
     }
     
-    
-    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    /*
-    func configureTableView() {
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 160.0
-    }*/
+
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
@@ -168,25 +150,18 @@ class ShareViewController: UIViewController, UITableViewDelegate, UITableViewDat
         //Message W/O Image
         else{
             //print("No Image")
-            let cell = tableView.dequeueReusableCellWithIdentifier("shareCell", forIndexPath: indexPath)
-            if let label = cell.textLabel{
+            let cell = tableView.dequeueReusableCellWithIdentifier("shareCell", forIndexPath: indexPath) as! PlainMessageTableViewCell
+            if let label = cell.shareLabel{
                 label.text = self.messages[indexPath.row].text
             }
+            /*if let label = cell.nameLabel{
+                label.text = "Katie"
+            }*/
             return cell
         }
         
     }
     
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

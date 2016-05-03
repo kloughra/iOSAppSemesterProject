@@ -28,6 +28,7 @@
 		4537BA0B1CBC3DFA00CEB381 /* RosterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA0A1CBC3DFA00CEB381 /* RosterTableViewController.swift */; };
 		4537BA0F1CBC3E6D00CEB381 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA0E1CBC3E6D00CEB381 /* Player.swift */; };
 		4537BA111CBC422D00CEB381 /* FacebookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4537BA101CBC422D00CEB381 /* FacebookService.swift */; };
+		455A6D8B1CD15666004EB22E /* AddPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455A6D8A1CD15666004EB22E /* AddPlayerViewController.swift */; };
 		4584975B1CBEABF800CDFF74 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4584975A1CBEABF800CDFF74 /* SwiftyJSON.swift */; };
 		4584975D1CBEDA4E00CDFF74 /* PlayerPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4584975C1CBEDA4E00CDFF74 /* PlayerPhoto.swift */; };
 		4584975F1CBEDFD900CDFF74 /* RosterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4584975E1CBEDFD900CDFF74 /* RosterTableViewCell.swift */; };
@@ -43,6 +44,10 @@
 		45A63C5A1CAB1F0B00CE0DDC /* NDRugbyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A63C591CAB1F0B00CE0DDC /* NDRugbyTests.swift */; };
 		45A63C651CAB1F0C00CE0DDC /* NDRugbyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A63C641CAB1F0C00CE0DDC /* NDRugbyUITests.swift */; };
 		45A63C781CAC701000CE0DDC /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A63C771CAC701000CE0DDC /* MenuTableViewController.swift */; };
+		45C551871CD8E5770034029E /* shamrock in Resources */ = {isa = PBXBuildFile; fileRef = 45C551861CD8E5770034029E /* shamrock */; };
+		45C551891CD8E59A0034029E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45C551881CD8E59A0034029E /* Images.xcassets */; };
+		45C5518B1CD912790034029E /* scrum.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 45C5518A1CD912790034029E /* scrum.jpg */; };
+		45C5518D1CD915A30034029E /* s5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 45C5518C1CD915A30034029E /* s5.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +88,7 @@
 		4537BA0A1CBC3DFA00CEB381 /* RosterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterTableViewController.swift; sourceTree = "<group>"; };
 		4537BA0E1CBC3E6D00CEB381 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4537BA101CBC422D00CEB381 /* FacebookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookService.swift; sourceTree = "<group>"; };
+		455A6D8A1CD15666004EB22E /* AddPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayerViewController.swift; sourceTree = "<group>"; };
 		4584975A1CBEABF800CDFF74 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		4584975C1CBEDA4E00CDFF74 /* PlayerPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerPhoto.swift; sourceTree = "<group>"; };
 		4584975E1CBEDFD900CDFF74 /* RosterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterTableViewCell.swift; sourceTree = "<group>"; };
@@ -104,6 +110,10 @@
 		45A63C641CAB1F0C00CE0DDC /* NDRugbyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDRugbyUITests.swift; sourceTree = "<group>"; };
 		45A63C661CAB1F0C00CE0DDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45A63C771CAC701000CE0DDC /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		45C551861CD8E5770034029E /* shamrock */ = {isa = PBXFileReference; lastKnownFileType = folder; path = shamrock; sourceTree = "<group>"; };
+		45C551881CD8E59A0034029E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		45C5518A1CD912790034029E /* scrum.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scrum.jpg; sourceTree = "<group>"; };
+		45C5518C1CD915A30034029E /* s5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = s5.jpg; sourceTree = "<group>"; };
 		789F64B1EBC143DC911AA177 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A261851354E45B2BBBD6A85B /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE0C20C49708DD7B85CA0FBA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -190,6 +200,7 @@
 				458497601CC5FA6C00CDFF74 /* PlayerDetailViewController.swift */,
 				458497621CC5FDCE00CDFF74 /* PhotoCollectionViewCell.swift */,
 				458497641CC76DD600CDFF74 /* PlayerPhotoViewController.swift */,
+				455A6D8A1CD15666004EB22E /* AddPlayerViewController.swift */,
 			);
 			name = Roster;
 			sourceTree = "<group>";
@@ -197,6 +208,7 @@
 		45A63C351CAB1F0B00CE0DDC = {
 			isa = PBXGroup;
 			children = (
+				45C551861CD8E5770034029E /* shamrock */,
 				45A63C401CAB1F0B00CE0DDC /* NDRugby */,
 				45A63C581CAB1F0B00CE0DDC /* NDRugbyTests */,
 				45A63C631CAB1F0C00CE0DDC /* NDRugbyUITests */,
@@ -224,6 +236,7 @@
 				45A63C731CAC6F6E00CE0DDC /* Model */,
 				45A63C721CAC6F6400CE0DDC /* View */,
 				45A63C761CAC6F8800CE0DDC /* Other */,
+				45C551881CD8E59A0034029E /* Images.xcassets */,
 			);
 			path = NDRugby;
 			sourceTree = "<group>";
@@ -285,6 +298,8 @@
 		45A63C751CAC6F7E00CE0DDC /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				45C5518C1CD915A30034029E /* s5.jpg */,
+				45C5518A1CD912790034029E /* scrum.jpg */,
 				4513EFAF1CCEADCE00C1F813 /* first_team.jpg */,
 				450596AF1CB5B43F0091532D /* camera.png */,
 				450596AB1CB59F8E0091532D /* quade.jpg */,
@@ -424,13 +439,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45C551891CD8E59A0034029E /* Images.xcassets in Resources */,
+				45C551871CD8E5770034029E /* shamrock in Resources */,
 				45A63C4F1CAB1F0B00CE0DDC /* LaunchScreen.storyboard in Resources */,
 				45A63C4C1CAB1F0B00CE0DDC /* Assets.xcassets in Resources */,
 				4513EFB01CCEADCE00C1F813 /* first_team.jpg in Resources */,
 				4595197D1CB3320300D0A200 /* temp_label.png in Resources */,
+				45C5518B1CD912790034029E /* scrum.jpg in Resources */,
 				450596AC1CB59F8E0091532D /* quade.jpg in Resources */,
 				450596B01CB5B43F0091532D /* camera.png in Resources */,
 				45A63C471CAB1F0B00CE0DDC /* Main.storyboard in Resources */,
+				45C5518D1CD915A30034029E /* s5.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +527,7 @@
 				450596A61CB4DDAC0091532D /* ShareViewController.swift in Sources */,
 				458497651CC76DD600CDFF74 /* PlayerPhotoViewController.swift in Sources */,
 				4513EFAE1CCEAB8C00C1F813 /* HistoryViewController.swift in Sources */,
+				455A6D8B1CD15666004EB22E /* AddPlayerViewController.swift in Sources */,
 				4584975F1CBEDFD900CDFF74 /* RosterTableViewCell.swift in Sources */,
 				45A63C781CAC701000CE0DDC /* MenuTableViewController.swift in Sources */,
 				4513EFBE1CD08F3000C1F813 /* AddNewsViewController.swift in Sources */,
